@@ -81,7 +81,7 @@ public class DownloadPreferenceActivity extends BasePreferenceActivity implement
 	private static final String PREFERENCE_FULLSCREEN = "general_cat.fullscreen";
 	private static final String PREFERENCE_GENERAL = "general_cat";
 	private static final String PREFERENCE_DEBUG_LOG = "general_cat.debug_logging";
-	private static final String PREFERENCE_AUTO_DSM = "general_cat.auto_detect_DSM";
+	//private static final String PREFERENCE_AUTO_DSM = "general_cat.auto_detect_DSM";
 	// Store the current max server id
 	private int maxServerId = 0;
 	// The dynamic servers category
@@ -163,7 +163,7 @@ public class DownloadPreferenceActivity extends BasePreferenceActivity implement
 			}
 		});
 		
-		final CheckBoxPreference autoDSM = new CheckBoxPreference(this);
+		/*final CheckBoxPreference autoDSM = new CheckBoxPreference(this);
 		autoDSM.setKey(PREFERENCE_AUTO_DSM);
 		autoDSM.setTitle(R.string.auto_DSM);
 		autoDSM.setSummary(R.string.hint_auto_DSM);
@@ -178,7 +178,7 @@ public class DownloadPreferenceActivity extends BasePreferenceActivity implement
 				}
 				return true;
 			}
-		});
+		});*/
 		
 		final CheckBoxPreference dbgLog = new CheckBoxPreference(this);
 		dbgLog.setKey(PREFERENCE_DEBUG_LOG);

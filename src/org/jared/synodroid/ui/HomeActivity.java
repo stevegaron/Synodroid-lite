@@ -276,13 +276,13 @@ public class HomeActivity extends BaseActivity {
         	
             startSearch(null, false, null, false);
         }
-        else if (item.getItemId() == R.id.menu_add){
+        /*else if (item.getItemId() == R.id.menu_add){
         	try{
         		if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"HomeActivity: Menu add selected.");
-        	}catch (Exception ex){/*DO NOTHING*/}
+        	}catch (Exception ex){}
         	
             showDialog(ADD_DOWNLOAD);
-        }
+        }*/
 		else if (item.getItemId() == R.id.menu_preferences){
 			try{
 				if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"HomeActivity: Menu preference selected.");
