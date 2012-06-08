@@ -6,7 +6,7 @@
     android:layout_height="fill_parent">
 	<include layout="@layout/actionbar" />
 	
-	<com.bigpupdev.synodroid.utils.ViewPagerIndicator 
+	<org.jared.synodroid.utils.ViewPagerIndicator 
             android:id="@+id/indicator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

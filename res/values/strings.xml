@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="TypographyEllipsis">
 
-<string name="app_name">Synodroid Pro</string>
+<string name="app_name">Synodroid</string>
 <string name="app_opensource">Opensource project</string>
 <string name="app_url">http://code.google.com/p/synodroid-ds/</string>
 
@@ -357,12 +357,12 @@
 <string name="dialog_message_confirm">&quot;The task is not completely finished. Are you sure you want to terminate it?&quot;</string>
 <string name="menu_add">Add Download</string>
 <string name="add_download_url_title">URL:</string>
-<string name="app_pro">Professional version</string>
+<string name="app_pro">Free version</string>
 <string name="app_google_plus">Circle us out on Google+ for up to date Synodroid information:</string>
 <string name="tab_about">About</string>    
 <string name="tab_help">F.A.Q.</string>    
 <string name="gplus">Get support on Google+</string>    
-<string name="description_logo">SynoDroid Pro</string>
+<string name="description_logo">SynoDroid Free</string>
 <string name="description_home">Home</string>
 <string name="description_search">Search</string>
 <string name="description_refresh">Refresh</string>

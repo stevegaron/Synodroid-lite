@@ -6,7 +6,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
     
-    <fragment android:name="com.bigpupdev.synodroid.ui.DownloadFragment"
+    <fragment android:name="org.jared.synodroid.ui.DownloadFragment"
         android:id="@+id/fragment_download"
         android:layout_width="fill_parent"
         android:layout_height="0px"

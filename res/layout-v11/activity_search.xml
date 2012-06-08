@@ -5,7 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 	
-	<fragment android:name="com.bigpupdev.synodroid.ui.SearchFragment" 
+	<fragment android:name="org.jared.synodroid.ui.SearchFragment" 
         	android:id="@+id/fragment_search"
         	android:layout_width="fill_parent"
         	android:layout_height="0px"

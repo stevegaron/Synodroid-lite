@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.bigpupdev.synodroid"
+      package="org.jared.synodroid"
       android:versionCode="212"
       android:versionName="2.1.2 Beta"
       android:installLocation="auto">
@@ -24,7 +24,7 @@
     android:logo="@drawable/title_logo"
     android:theme="@style/Theme.Synodroid"
     android:hardwareAccelerated="true"
-    android:name="com.bigpupdev.synodroid.Synodroid">
+    android:name="org.jared.synodroid.Synodroid">
     	
     <activity 
       android:name=".ui.HomeActivity"
@@ -213,10 +213,10 @@
     </service>
     
 	<provider android:name=".utils.SynodroidSearchSuggestion"
-              android:authorities="com.bigpupdev.synodroid.utils.SynodroidSearchSuggestion" />
+              android:authorities="org.jared.synodroid.utils.SynodroidSearchSuggestion" />
 	
 	<provider
               android:name=".utils.SynodroidDSMSearch"
-              android:authorities="com.bigpupdev.synodroid.utils.SynodroidDSMSearch" />
+              android:authorities="org.jared.synodroid.utils.SynodroidDSMSearch" />
   </application>
 </manifest>
