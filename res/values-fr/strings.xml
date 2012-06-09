@@ -394,4 +394,7 @@
 <string name="action_resuming_multiple">&quot;Reprise des tâches sélectionées...%s&quot;</string>
 <string name="file_not_found">Échec d\'acces à une des fonctionalités du serveur. Il est probable que vous utilisiez la mauvaise version de DSM. Utilisez la fonction d\'autodetection de DSM dans les paramêtres...</string>
 <string name="failed_response">Échec de lecture de la réponse du serveur. Reconectez-vous!</string>
+<string name="syno_pro_banner_text">Nouvelles fonctionalitées avec Synodroid Pro. Appuyez ici!</string>
+<string name="err_nomarket_upgrade">Android market n\'est pas installé sur votre appareil.\n\nContactez le développeur pour avoir une version de Synodroid Pro.</string>
+
 </resources>

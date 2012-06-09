@@ -394,5 +394,9 @@
 <string name="action_resuming_multiple">&quot;Resuming selected tasks...%s&quot;</string>
 <string name="file_not_found">Failed to get access to one of the features. This is most likely due to a wrong DSM version selected. Use DSM autodetection in the settings...</string>
 <string name="failed_response">Failed to read response from server. Please reconnect!</string>
+<string name="syno_pro_banner_text">Get new features with Synodroid Pro. Press to get it!</string>
+<string name="err_nomarket_upgrade">Android market is not installed on your device.\n\nContact the developers to get a copy of Synodroid Pro.</string>
+<string name="hide_banner">Hide Pro Banner</string>
+<string name="hint_hide_banner">Hide Synodroid Pro banner at the bottom of the download list</string>
 
 </resources>

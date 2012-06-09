@@ -1,7 +1,11 @@
 package org.jared.synodroid.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -13,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager.BadTokenException;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.jared.synodroid.R;
@@ -20,6 +25,8 @@ import org.jared.synodroid.Synodroid;
 import org.jared.synodroid.utils.EulaHelper;
 
 public class AboutFragment extends Fragment{
+	private static final String SYNO_PRO_URL_DL_MARKET = "market://details?id=com.bigpupdev.synodroid";
+	
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		// ignore orientation change
@@ -68,6 +75,33 @@ public class AboutFragment extends Fragment{
 		TextView message = (TextView) about.findViewById(R.id.about_code);
 		message.setText(Html.fromHtml("<a href=\"https://plus.google.com/111893484035545745539\">"+getString(R.string.gplus_title)+"</a>"));
 		message.setMovementMethod(LinkMovementMethod.getInstance());
+		
+		LinearLayout goPro = (LinearLayout) about.findViewById(R.id.upgrade);
+		goPro.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Intent goToMarket = null;
+				goToMarket = new Intent(Intent.ACTION_VIEW, Uri.parse(SYNO_PRO_URL_DL_MARKET));
+				try {
+					startActivity(goToMarket);
+				} catch (Exception e) {
+					AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+					// By default the message is "Error Unknown"
+					builder.setMessage(R.string.err_nomarket_upgrade);
+					builder.setTitle(getString(R.string.connect_error_title)).setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int id) {
+							dialog.cancel();
+						}
+					});
+					AlertDialog errorDialog = builder.create();
+					try {
+						errorDialog.show();
+					} catch (BadTokenException ex) {
+						// Unable to show dialog probably because intent has been closed. Ignoring...
+					}
+				}
+
+			}
+		});
 		return about;
 	}
 }

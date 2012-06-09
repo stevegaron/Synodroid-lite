@@ -377,4 +377,8 @@
     
 <string name="selected">ausgewählt</string>
 <string name="upload_failed">Upload der Dateien auf dem NAS gescheitert. Wiederholen ...</string>
+<string name="syno_pro_banner_text">Mehr Funktionen mit Synodroid Pro. Zum Market!</string>
+<string name="err_nomarket_upgrade">Der Android Market ist auf ihrem Gerät nicht installiert.\n\nKontaktieren sie die Entwickler um Synodroid Pro zu bekommen.</string>
+
+
 </resources>

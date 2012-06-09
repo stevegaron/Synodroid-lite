@@ -45,6 +45,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 //import android.content.SharedPreferences;
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
@@ -81,7 +82,10 @@ public class DownloadFragment extends SynodroidFragment implements OnCheckedChan
 	private static final int CONNECTION_DIALOG_ID = 1;
 	// No server configured
 	private static final int NO_SERVER_DIALOG_ID = 2;
-
+	private static final String SYNO_PRO_URL_DL_MARKET = "market://details?id=com.bigpupdev.synodroid";
+	private static final String PREFERENCE_HIDE_BANNER = "general_cat.banner";
+	private static final String PREFERENCE_GENERAL = "general_cat";
+	
 	// The torrent listview
 	public ListView taskView;
 	// The total upload rate view
@@ -89,8 +93,10 @@ public class DownloadFragment extends SynodroidFragment implements OnCheckedChan
 	private TextView totalTasksView;
 	// The total download rate view
 	private TextView totalDownView;
+	private LinearLayout goPro;
 	// Flag to tell app that the connect dialog is opened
 	private boolean connectDialogOpened = false;
+	
 	
 	public boolean alreadyCanceled = false;
 	public ActionModeHelper mCurrentActionMode;
@@ -394,6 +400,33 @@ public class DownloadFragment extends SynodroidFragment implements OnCheckedChan
 		View empty = downloadContent.findViewById(android.R.id.empty);
 		taskView.setEmptyView(empty);
 		
+		goPro = (LinearLayout) downloadContent.findViewById(R.id.upgrade);
+		goPro.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Intent goToMarket = null;
+				goToMarket = new Intent(Intent.ACTION_VIEW, Uri.parse(SYNO_PRO_URL_DL_MARKET));
+				try {
+					startActivity(goToMarket);
+				} catch (Exception e) {
+					AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+					// By default the message is "Error Unknown"
+					builder.setMessage(R.string.err_nomarket_upgrade);
+					builder.setTitle(getString(R.string.connect_error_title)).setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int id) {
+							dialog.cancel();
+						}
+					});
+					AlertDialog errorDialog = builder.create();
+					try {
+						errorDialog.show();
+					} catch (BadTokenException ex) {
+						// Unable to show dialog probably because intent has been closed. Ignoring...
+					}
+				}
+
+			}
+		});		
+		
 		return downloadContent;
 	}
 
@@ -560,6 +593,14 @@ public class DownloadFragment extends SynodroidFragment implements OnCheckedChan
 	public void onResume() {
 		super.onResume();
 		final Activity a = getActivity();
+		
+		SharedPreferences preferences = a.getSharedPreferences(PREFERENCE_GENERAL, Activity.MODE_PRIVATE);
+		if (preferences.getBoolean(PREFERENCE_HIDE_BANNER, false)) {
+			goPro.setVisibility(View.GONE);
+		}
+		else{
+			goPro.setVisibility(View.VISIBLE);
+		}
 		/**
 		 * Intents are driving me insane.
 		 * 

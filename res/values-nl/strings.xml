@@ -394,5 +394,7 @@
 <string name="action_resuming_multiple">&quot;Geselecteerde taken hervatten...%s&quot;</string>
 <string name="file_not_found">Mislukt om toegang te krijgen tot een van de services. Dit kan komen door een verkeerd geselecteerde DSM versie. U kunt auto-herkenning aanzetten in de instellingen om de DSM versie automatisch vast te stellen...</string>
 <string name="failed_response">Mislukt om het antwoord van de server te verwerken. Maak opnieuw verbinding!</string>
+<string name="syno_pro_banner_text">Krijg de nieuwe functies van Synodroid Pro. Klik hier!</string>
+<string name="err_nomarket_upgrade">Android market is niet geïnstalleerd op je toestel.\n\nContacteer de ontwikkelaars van Synodroid voor een kopie van Synodroid Pro.</string>
 
 </resources>

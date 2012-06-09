@@ -80,6 +80,8 @@ public class DownloadPreferenceActivity extends BasePreferenceActivity implement
 	private static final String PREFERENCE_GENERAL = "general_cat";
 	private static final String PREFERENCE_DEBUG_LOG = "general_cat.debug_logging";
 	//private static final String PREFERENCE_AUTO_DSM = "general_cat.auto_detect_DSM";
+	private static final String PREFERENCE_HIDE_BANNER = "general_cat.banner";
+	
 	// Store the current max server id
 	private int maxServerId = 0;
 	// The dynamic servers category
@@ -177,6 +179,23 @@ public class DownloadPreferenceActivity extends BasePreferenceActivity implement
 				return true;
 			}
 		});*/
+		
+		final CheckBoxPreference banner = new CheckBoxPreference(this);
+		banner.setKey(PREFERENCE_HIDE_BANNER);
+		banner.setTitle(R.string.hide_banner);
+		banner.setSummary(R.string.hint_hide_banner);
+		generalCategory.addPreference(banner);
+		banner.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+			public boolean onPreferenceChange(Preference preference, Object newValue) {
+				SharedPreferences preferences = getSharedPreferences(PREFERENCE_GENERAL, Activity.MODE_PRIVATE);
+				if (newValue.toString().equals("true")) {
+					preferences.edit().putBoolean(PREFERENCE_HIDE_BANNER, true).commit();
+				} else {
+					preferences.edit().putBoolean(PREFERENCE_HIDE_BANNER, false).commit();
+				}
+				return true;
+			}
+		});
 		
 		final CheckBoxPreference dbgLog = new CheckBoxPreference(this);
 		dbgLog.setKey(PREFERENCE_DEBUG_LOG);
