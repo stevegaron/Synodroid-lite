@@ -18,13 +18,13 @@ import org.jared.synodroid.server.SynoServer;
 import org.jared.synodroid.action.AddTaskAction;
 import org.jared.synodroid.action.EnumShareAction;
 import org.jared.synodroid.action.GetAllAndOneDetailTaskAction;
-import org.jared.synodroid.action.GetDirectoryListShares;
+//import org.jared.synodroid.action.GetDirectoryListShares;
 import org.jared.synodroid.action.SetShared;
 import org.jared.synodroid.action.SynoAction;
 import org.jared.synodroid.data.DSMVersion;
-import org.jared.synodroid.data.Folder;
+//import org.jared.synodroid.data.Folder;
 import org.jared.synodroid.data.SharedDirectory;
-import org.jared.synodroid.data.SharedFolderSelection;
+//import org.jared.synodroid.data.SharedFolderSelection;
 import org.jared.synodroid.data.SynoProtocol;
 import org.jared.synodroid.data.Task;
 import org.jared.synodroid.data.TaskContainer;
@@ -268,7 +268,7 @@ public class DownloadFragment extends SynodroidFragment implements OnCheckedChan
 			
 			AlertDialog.Builder builder = new AlertDialog.Builder(a);
 			
-			if (((Synodroid)a.getApplication()).getServer().getDsmVersion().greaterThen(DSMVersion.VERSION3_1)){
+			/*if (((Synodroid)a.getApplication()).getServer().getDsmVersion().greaterThen(DSMVersion.VERSION3_1)){
 				final SharedFolderSelection sf = (SharedFolderSelection) msg.obj;
 				final String[] dirNames = new String[sf.childrens.size()];
 				final String[] dirIDs = new String[sf.childrens.size()];
@@ -303,7 +303,7 @@ public class DownloadFragment extends SynodroidFragment implements OnCheckedChan
 				
 
 			}
-			else{
+			else{*/
 				List<SharedDirectory> newDirs = (List<SharedDirectory>) msg.obj;
 				final String[] dirNames = new String[newDirs.size()];
 				int selected = -1;
@@ -322,9 +322,7 @@ public class DownloadFragment extends SynodroidFragment implements OnCheckedChan
 						app.executeAsynchronousAction(DownloadFragment.this, new SetShared(null, dirNames[item]), true);
 					}
 				});
-
-				
-			}
+			//}
 			
 			AlertDialog alert = builder.create();
 			try {
@@ -339,12 +337,12 @@ public class DownloadFragment extends SynodroidFragment implements OnCheckedChan
 			}catch (Exception ex){/*DO NOTHING*/}
 			
 			Synodroid app = (Synodroid) a.getApplication();
-			if (app.getServer().getDsmVersion().greaterThen(DSMVersion.VERSION3_1)){
+			/*if (app.getServer().getDsmVersion().greaterThen(DSMVersion.VERSION3_1)){
         		app.executeAsynchronousAction(this, new GetDirectoryListShares("fm_root"), false);
         	}
-        	else{
+        	else{*/
         		app.executeAsynchronousAction(this, new EnumShareAction(), false);
-        	}
+        	//}
 		}
 	}
 

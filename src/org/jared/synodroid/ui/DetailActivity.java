@@ -11,7 +11,7 @@ import org.jared.synodroid.Synodroid;
 import org.jared.synodroid.action.DeleteTaskAction;
 import org.jared.synodroid.action.DownloadOriginalLinkAction;
 import org.jared.synodroid.action.EnumShareAction;
-import org.jared.synodroid.action.GetDirectoryListShares;
+//import org.jared.synodroid.action.GetDirectoryListShares;
 import org.jared.synodroid.action.GetFilesAction;
 import org.jared.synodroid.action.GetTaskPropertiesAction;
 import org.jared.synodroid.action.PauseTaskAction;
@@ -27,10 +27,10 @@ import org.jared.synodroid.adapter.DetailAction;
 import org.jared.synodroid.adapter.DetailProgress;
 import org.jared.synodroid.adapter.DetailText;
 import org.jared.synodroid.data.DSMVersion;
-import org.jared.synodroid.data.Folder;
+//import org.jared.synodroid.data.Folder;
 import org.jared.synodroid.data.OriginalFile;
 import org.jared.synodroid.data.SharedDirectory;
-import org.jared.synodroid.data.SharedFolderSelection;
+//import org.jared.synodroid.data.SharedFolderSelection;
 import org.jared.synodroid.data.Task;
 import org.jared.synodroid.data.TaskDetail;
 import org.jared.synodroid.data.TaskFile;
@@ -593,7 +593,7 @@ public class DetailActivity extends BaseActivity{
 			
 			AlertDialog.Builder builder = new AlertDialog.Builder(DetailActivity.this);
 			
-			if (((Synodroid)getApplication()).getServer().getDsmVersion().greaterThen(DSMVersion.VERSION3_1)){
+			/*if (((Synodroid)getApplication()).getServer().getDsmVersion().greaterThen(DSMVersion.VERSION3_1)){
 				final SharedFolderSelection sf = (SharedFolderSelection) msgP.obj;
 				final String[] dirNames = new String[sf.childrens.size()];
 				final String[] dirIDs = new String[sf.childrens.size()];
@@ -626,7 +626,7 @@ public class DetailActivity extends BaseActivity{
 				
 
 			}
-			else{
+			else{*/
 				List<SharedDirectory> newDirs = (List<SharedDirectory>) msgP.obj;
 				final String[] dirNames = new String[newDirs.size()];
 				int selected = -1;
@@ -644,9 +644,7 @@ public class DetailActivity extends BaseActivity{
 						app.executeAsynchronousAction(main, new SetShared(task, dirNames[item]), true);
 					}
 				});
-
-				
-			}
+			//}
 			
 			AlertDialog alert = builder.create();
 			try {
@@ -864,12 +862,12 @@ public class DetailActivity extends BaseActivity{
 				if (app.DEBUG) Log.d(Synodroid.DS_TAG,"DetailActivity: Menu destination selected.");
 			}catch (Exception ex){/*DO NOTHING*/}
 			
-			if (app.getServer().getDsmVersion().greaterThen(DSMVersion.VERSION3_1)){
+			/*if (app.getServer().getDsmVersion().greaterThen(DSMVersion.VERSION3_1)){
         		app.executeAsynchronousAction(main, new GetDirectoryListShares("remote/"+destination), false);
         	}
-        	else{
+        	else{*/
         		app.executeAsynchronousAction(main, new EnumShareAction(), false);
-        	}
+        	//}
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

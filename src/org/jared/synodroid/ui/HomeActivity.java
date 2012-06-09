@@ -7,11 +7,11 @@ import org.jared.synodroid.Synodroid;
 import org.jared.synodroid.action.AddTaskAction;
 import org.jared.synodroid.action.ClearAllTaskAction;
 import org.jared.synodroid.action.EnumShareAction;
-import org.jared.synodroid.action.GetDirectoryListShares;
+//import org.jared.synodroid.action.GetDirectoryListShares;
 import org.jared.synodroid.action.ResumeAllAction;
 import org.jared.synodroid.action.StopAllAction;
 import org.jared.synodroid.adapter.TaskAdapter;
-import org.jared.synodroid.data.DSMVersion;
+//import org.jared.synodroid.data.DSMVersion;
 import org.jared.synodroid.data.Task;
 import org.jared.synodroid.utils.ActivityHelper;
 import org.jared.synodroid.utils.EulaHelper;
@@ -299,12 +299,12 @@ public class HomeActivity extends BaseActivity {
 			FragmentManager fm = getSupportFragmentManager();
 	        try{
 	        	DownloadFragment fragment_download = (DownloadFragment) fm.findFragmentById(R.id.fragment_download);
-	        	if (app.getServer().getDsmVersion().greaterThen(DSMVersion.VERSION3_1)){
+	        	/*if (app.getServer().getDsmVersion().greaterThen(DSMVersion.VERSION3_1)){
 	        		app.executeAsynchronousAction(fragment_download, new GetDirectoryListShares(null), false);
 	        	}
-	        	else{
+	        	else{*/
 	        		app.executeAsynchronousAction(fragment_download, new EnumShareAction(), false);
-	        	}
+	        	//}
 	        }
 			catch (Exception e){
 				try{
