@@ -15,7 +15,6 @@ import org.jared.synodroid.adapter.TaskAdapter;
 import org.jared.synodroid.data.Task;
 import org.jared.synodroid.utils.ActivityHelper;
 import org.jared.synodroid.utils.EulaHelper;
-import org.jared.synodroid.utils.UIUtils;
 import org.jared.synodroid.ui.DownloadPreferenceActivity;
 
 import android.app.Activity;
@@ -245,16 +244,9 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-    	if (UIUtils.isHoneycomb()){
-    		getMenuInflater().inflate(R.menu.refresh_menu_items, menu);
-            getMenuInflater().inflate(R.menu.default_menu_items, menu);
-            getMenuInflater().inflate(R.menu.download_menu_items, menu);
-    	}
-    	else{
-    		getMenuInflater().inflate(R.menu.refresh_menu_items, menu);
-            getMenuInflater().inflate(R.menu.download_menu_items, menu);
-            getMenuInflater().inflate(R.menu.default_menu_items, menu);
-    	}
+		getMenuInflater().inflate(R.menu.refresh_menu_items, menu);
+        getMenuInflater().inflate(R.menu.default_menu_items, menu);
+        getMenuInflater().inflate(R.menu.download_menu_items, menu);
     	super.onCreateOptionsMenu(menu);
         return true;
     }
