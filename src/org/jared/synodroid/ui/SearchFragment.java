@@ -41,6 +41,7 @@ import org.jared.synodroid.action.SetSearchEngines;
 import org.jared.synodroid.data.DSMVersion;
 import org.jared.synodroid.data.SearchEngine;
 import org.jared.synodroid.protocol.ResponseHandler;
+import org.jared.synodroid.server.SynoServer;
 import org.jared.synodroid.utils.SearchViewBinder;
 import org.jared.synodroid.utils.SynodroidDSMSearch;
 import org.jared.synodroid.utils.SynodroidSearchSuggestion;
@@ -289,8 +290,9 @@ public class SearchFragment extends SynodroidFragment {
 		Cursor sites =  getActivity().managedQuery(uri, null, null, null, null);
 		Synodroid app = (Synodroid) getActivity().getApplication();
 		List<Object[]> ret = new ArrayList<Object[]>();
+		SynoServer server = app.getServer();
 		
-		if (app.getServer().getDsmVersion().greaterThen(DSMVersion.VERSION3_1)){
+		if (server != null && server.getDsmVersion().greaterThen(DSMVersion.VERSION3_1)){
 			Object[] values = new Object[4];
             values[0] = 11223344;
             values[1] = "DSM Search";
