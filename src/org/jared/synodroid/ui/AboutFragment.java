@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager.BadTokenException;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ import org.jared.synodroid.utils.EulaHelper;
 
 public class AboutFragment extends Fragment{
 	private static final String SYNO_PRO_URL_DL_MARKET = "market://details?id=com.bigpupdev.synodroid";
+	private static final String SYNO_DONATE_URL = "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ABCSFVFDRJEFS&lc=CA&item_name=Synodroid&item_number=synodroid%2dmarket&currency_code=CAD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted";
 	
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
@@ -75,6 +77,14 @@ public class AboutFragment extends Fragment{
 		TextView message = (TextView) about.findViewById(R.id.about_code);
 		message.setText(Html.fromHtml("<a href=\"https://plus.google.com/111893484035545745539\">"+getString(R.string.gplus_title)+"</a>"));
 		message.setMovementMethod(LinkMovementMethod.getInstance());
+		
+		ImageView donate = (ImageView) about.findViewById(R.id.ImgViewDonate);
+		donate.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Intent i = new Intent("android.intent.action.VIEW", Uri.parse(SYNO_DONATE_URL));
+				startActivity(i);
+			}
+		});
 		
 		LinearLayout goPro = (LinearLayout) about.findViewById(R.id.upgrade);
 		goPro.setOnClickListener(new View.OnClickListener() {
