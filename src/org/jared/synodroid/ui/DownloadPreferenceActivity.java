@@ -34,14 +34,12 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.DialogInterface.OnMultiChoiceClickListener;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
-import android.net.Uri;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
@@ -198,20 +196,6 @@ public class DownloadPreferenceActivity extends BasePreferenceActivity implement
 				return true;
 			}
 		});
-
-		final Preference updateSearchEngine = new Preference(this);
-		updateSearchEngine.setTitle(R.string.update_search_engine);
-		generalCategory.addPreference(updateSearchEngine);
-		updateSearchEngine.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-
-			public boolean onPreferenceClick(Preference arg0) {
-				downloadSearchEngine();
-				Toast toast = Toast.makeText(DownloadPreferenceActivity.this, getString(R.string.update_search_engine_toast), Toast.LENGTH_LONG);
-				toast.show();
-				return false;
-			}
-
-		});
 		
 		final Preference clearHistory = new Preference(this);
 		clearHistory.setTitle(R.string.clear_search_history);
@@ -243,13 +227,6 @@ public class DownloadPreferenceActivity extends BasePreferenceActivity implement
 	private void clearSearchHistory() {
 		SearchRecentSuggestions suggestions = new SearchRecentSuggestions(this, SynodroidSearchSuggestion.AUTHORITY, SynodroidSearchSuggestion.MODE);
 		suggestions.clearHistory();
-	}
-	
-	private void downloadSearchEngine() {
-		String url = "http://transdroid.org/latest-search";  
-		Intent i = new Intent(Intent.ACTION_VIEW);  
-		i.setData(Uri.parse(url));  
-		startActivity(i);  
 	}
 
 	private void reloadCurrentServers() {
