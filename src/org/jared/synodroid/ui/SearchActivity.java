@@ -3,7 +3,7 @@ package org.jared.synodroid.ui;
 import org.jared.synodroid.R;
 import org.jared.synodroid.Synodroid;
 import org.jared.synodroid.action.GetSearchEngineAction;
-import org.jared.synodroid.data.DSMVersion;
+//import org.jared.synodroid.data.DSMVersion;
 import org.jared.synodroid.utils.EulaHelper;
 
 import android.app.Activity;
@@ -36,12 +36,12 @@ public class SearchActivity extends BaseActivity{
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.default_menu_items, menu);
-		try{
+		/*try{
 			if (((Synodroid)getApplication()).getServer().getDsmVersion().greaterThen(DSMVersion.VERSION3_1)){
 				getMenuInflater().inflate(R.menu.default_menu_items_search, menu);	
 			}	
 		}
-		catch (NullPointerException npe){}
+		catch (NullPointerException npe){}*/
 		getMenuInflater().inflate(R.menu.update_search, menu);
 		
         super.onCreateOptionsMenu(menu);

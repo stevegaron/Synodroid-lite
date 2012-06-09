@@ -37,10 +37,10 @@ import org.jared.synodroid.R;
 import org.jared.synodroid.Synodroid;
 import org.jared.synodroid.action.AddTaskAction;
 import org.jared.synodroid.action.SetSearchEngines;
-import org.jared.synodroid.data.DSMVersion;
+//import org.jared.synodroid.data.DSMVersion;
 import org.jared.synodroid.data.SearchEngine;
 import org.jared.synodroid.protocol.ResponseHandler;
-import org.jared.synodroid.server.SynoServer;
+//import org.jared.synodroid.server.SynoServer;
 import org.jared.synodroid.utils.SearchViewBinder;
 import org.jared.synodroid.utils.SynodroidDSMSearch;
 import org.jared.synodroid.utils.SynodroidSearchSuggestion;
@@ -228,9 +228,9 @@ public class SearchFragment extends SynodroidFragment {
 		Uri uri = Uri.parse(uriString);
 		// Then query all torrent sites (no selection nor projection nor sort):
 		Cursor sites =  getActivity().managedQuery(uri, null, null, null, null);
-		Synodroid app = (Synodroid) getActivity().getApplication();
+		//Synodroid app = (Synodroid) getActivity().getApplication();
 		List<Object[]> ret = new ArrayList<Object[]>();
-		SynoServer server = app.getServer();
+		/*SynoServer server = app.getServer();
 		
 		if (server != null && server.getDsmVersion().greaterThen(DSMVersion.VERSION3_1)){
 			Object[] values = new Object[4];
@@ -239,7 +239,7 @@ public class SearchFragment extends SynodroidFragment {
             values[2] = "DSM Search";
             values[3] = null;
             ret.add(values);
-		}
+		}*/
 		if (sites != null){
 			if (sites.moveToFirst()) {
 				do {

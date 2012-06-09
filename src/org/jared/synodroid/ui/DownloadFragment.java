@@ -60,6 +60,7 @@ import android.view.ViewGroup;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.WindowManager.BadTokenException;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -382,6 +383,8 @@ public class DownloadFragment extends SynodroidFragment implements OnCheckedChan
 		totalUpView = (TextView) downloadContent.findViewById(R.id.id_total_upload);
 		totalDownView = (TextView) downloadContent.findViewById(R.id.id_total_download);
 		totalTasksView = (TextView) downloadContent.findViewById(R.id.id_total_num_dl);
+		LinearLayout dlbar = (LinearLayout) downloadContent.findViewById(R.id.dl_bar);
+		dlbar.setVisibility(View.GONE);
 		// Create the task adapter
 		TaskAdapter taskAdapter = new TaskAdapter(this);
 		taskView.setAdapter(taskAdapter);
