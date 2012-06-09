@@ -7,7 +7,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.SearchManager;
-import android.content.Context;
+//import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -169,7 +169,7 @@ public class SearchFragment extends SynodroidFragment {
 
 		resList.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-				final RelativeLayout rl = (RelativeLayout) arg1;
+				/*final RelativeLayout rl = (RelativeLayout) arg1;
 				TextView itemValue = (TextView) rl.findViewById(R.id.result_title);
 				TextView itemSize = (TextView) rl.findViewById(R.id.result_size);
 				TextView itemSeed = (TextView) rl.findViewById(R.id.result_seeds);
@@ -207,7 +207,22 @@ public class SearchFragment extends SynodroidFragment {
 						app.executeAction(SearchFragment.this, addTask, true);
 						
 					}
+				}).create();*/
+				
+				final RelativeLayout rl = (RelativeLayout) arg1;
+				Dialog d = new AlertDialog.Builder(a).setTitle(R.string.dialog_title_confirm).setMessage(R.string.dialog_message_confirm_add).setNegativeButton(android.R.string.no, null).setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						TextView tv = (TextView) rl.findViewById(R.id.result_url);
+						
+						Uri uri = Uri.parse(tv.getText().toString());
+						AddTaskAction addTask = new AddTaskAction(uri, true, true);
+						Synodroid app = (Synodroid) getActivity().getApplication();
+						app.executeAction(SearchFragment.this, addTask, true);
+						
+					}
 				}).create();
+				
+				
 				try {
 					d.show();
 				} catch (BadTokenException e) {
