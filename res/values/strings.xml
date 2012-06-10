@@ -402,6 +402,7 @@
 <string name="welcome">Welcome to Synodroid!</string>
 <string name="get_started">Synodroid tutorial</string>
 <string name="get_started_text">Swipe throught the pages of this tutorial to get more information about the multiple features of this application.</string>
+<string name="get_started_text_2">NOTE: The turorial will always be available from the about page (Menu -> About form the home page). You should read through it at least once, you might learn something.</string>
 <string name="skip">Skip tutorial</string>
 <string name="syno_info_title">Control your NAS</string>
 <string name="syno_info_t1">Synodroid was made to control the Download Station feature of a Synology Network Attached Storage (NAS). If you don\'t have one, this app is not for you.</string>
@@ -415,13 +416,13 @@
 <string name="add_server_t3">The add server wizard is to be used either when the find server failed or if you\'re not connected to wifi. It allows you to manually choose all the connection settings to connect to your NAS.</string>
 <string name="add_dl_title">Add download to your NAS</string>
 <string name="add_dl_t1">The Synodroid app allow you to add download tasks to your NAS. There are multiple ways to do so, here are some of them:</string>
-<string name="add_dl_st1">1. Direct link press in browser</string>
+<string name="add_dl_st1">Direct link press in browser</string>
 <string name="add_dl_t2">From the android browser, when you press any links to .torrent or .nzb files, Synodroid will step in and allow your to download the file(s) associated to the link.</string>
-<string name="add_dl_st2">2. Android share feature</string>
+<string name="add_dl_st2">Android share feature</string>
 <string name="add_dl_t3">From any application installed on your phone (Browsers, file manager, or any other third party application) if you share a link (any sort of links, not just .torrent/.nzb), Synodroid will appear in the list of applications where you can share the link to.</string>
-<string name="add_dl_st3">3. File selection</string>
+<string name="add_dl_st3">File selection</string>
 <string name="add_dl_t4">From any good file management application or even from the official android download application, you can click a .torrent or .nzb file and the file will be uploaded to your NAS to start the download.</string>
-<string name="add_dl_st4">4. Add Download dialog (Pro only)</string>
+<string name="add_dl_st4">Add Download dialog (Pro only)</string>
 <string name="add_dl_t5">From the Synodroid homepage, open the "Add Download" menu and type or paste any link that you want to start downloading. </string>
 <string name="add_dl_t6">This is one of the many features only available in Synodroid Professional!</string>
 <string name="search_engine_t">Search engines</string>
@@ -432,7 +433,7 @@
 <string name="search_engine_t3">Synodroid Professional provide access to the Synology DSM Search engine. Searches done using DSM Search are send to multiple search engine at the time, not just one like Transdroid Torrent Search. You can manage the search engines to be used when you do a search.</string>
 <string name="search_engine_t4">This is one of the many features only available in Synodroid Professional!</string>
 <string name="upgrade_title">Upgrade to Pro</string>
-<string name="upgrade_t1">Synodroid Pro contains a lot of features that are really usefull that makes it a worthy upgrade. Check out the list of Synodroid Pro only feature:</string>
+<string name="upgrade_t1">Synodroid Pro contains a lot of features that are really useful and make it a worthy upgrade. Check out the list of Synodroid Pro only feature:</string>
 <string name="upgrade_st1">1. Add Download dialog</string>
 <string name="upgrade_t2">The add download dialog is a very handy feature that allow you to type or paste any link to be downloaded by your NAS.</string>
 <string name="upgrade_st2">2. Download destination to sub-folder</string>
@@ -443,8 +444,11 @@
 <string name="upgrade_t5">Integration with Synology\'s DSM Search engine is a feature only accessible in the Pro version of Synodroid. It also allows you to search on multiple site at the same time and to manage the list of site to search from.</string>
 <string name="upgrade_st5">5. Preview torrent before download</string>
 <string name="upgrade_t6">Synodroid pro give you a preview of the torrent including the full file name for any torrent started with the search engine.</string>
+<string name="upgrade_st6">6. Autodetect DSM Version</string>
+<string name="upgrade_t7">The Pro verion can auto detect what DSM version you are running and adjust your configuration accordingly. This means that you wont have to change the DSM version of your connection every time you upgrade your NAS.</string>
+<string name="upgrade_st7">Upgrade now</string>
 <string name="upgrade_play">Synodroid Pro offers many new features over the free Synodroid version. A lot more is also coming in a near future. Get Synodroid Pro now while the price is still low...</string>
-<string name="tutorial_done">Go back to the app...</string>
+<string name="tutorial_done">End tutorial</string>
 <string name="tab_synology">Synology</string>
 <string name="tab_server">Server</string>
 <string name="tab_download">Download</string>

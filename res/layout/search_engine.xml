@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/about_scroll"
-    android:layout_width="fill_parent"
+    android:layout_margin="5dip"
+	android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:isScrollContainer="true"
     tools:ignore="HardcodedText" >
@@ -55,8 +56,9 @@
         <ImageView
 		    android:id="@+id/img_se2"
 		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_marginLeft="40dip"
+		    android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="40dip"
 		    android:layout_marginRight="40dip"
 		    android:layout_marginTop="20dip"
 		    android:layout_marginBottom="20dip"
@@ -87,8 +89,9 @@
         <ImageView
 		    android:id="@+id/img_se1"
 		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_marginLeft="40dip"
+		    android:layout_height="160dp"
+	        android:layout_gravity="center"
+	        android:layout_marginLeft="40dip"
 		    android:layout_marginRight="40dip"
 		    android:layout_marginTop="20dip"
 		    android:layout_marginBottom="20dip"
@@ -111,8 +114,8 @@
 
         <ImageView
             android:id="@+id/img_play"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginBottom="20dip"
             android:layout_marginLeft="40dip"
@@ -120,7 +123,7 @@
             android:layout_marginTop="20dip"
             android:adjustViewBounds="true"
             android:cropToPadding="true"
-            android:scaleType="fitXY"
+            android:scaleType="fitCenter"
             android:src="@drawable/get_it_on_play_logo" />
         
     </LinearLayout>
