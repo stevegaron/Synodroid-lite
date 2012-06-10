@@ -412,7 +412,7 @@
 <string name="add_server_t1">There are two (2) ways to add a NAS server connection to the application. Both are located in the application settings (press menu, settings from the application homepage).</string>
 <string name="add_server_st1">Find Server Wizard</string>
 <string name="add_server_t2">The find server wizard requires to have wireless turned ON on your phone or tablet and to be connected to the wireless network where your NAS resides. Synodroid will try to detect your NAS from the network and prompt you with a dialog to select the NAS that was found and let you configure the extra settings.</string>
-<string name="add_server_st2">Add server wizard</string>
+<string name="add_server_st2">Add Server Wizard</string>
 <string name="add_server_t3">The Add Server Wizard is to be used either when the find server failed or if you\'re not connected to wifi. It allows you to manually choose all the connection settings to connect to your NAS.</string>
 <string name="add_dl_title">Add Downloads to your NAS</string>
 <string name="add_dl_t1">The Synodroid app allows you to add download tasks to your NAS. There are multiple ways to do so, here are some of them:</string>
