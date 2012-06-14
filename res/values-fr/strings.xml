@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="TypographyEllipsis">
     
-<string name="app_name">Synodroid Pro</string>
+<string name="app_name">Synodroid</string>
 <string name="app_opensource">Projet Opensource</string>
 <string name="app_url">http://code.google.com/p/synodroid-ds/</string>
 
@@ -358,12 +358,12 @@
 <string name="dialog_message_confirm">&quot;La tâche n\'est pas complètement terminée. Êtes-vous certain de vouloir l\'arrêter?&quot;</string>
 <string name="menu_add">Ajout de téléchargement</string>
 <string name="add_download_url_title">Lien:</string>
-<string name="app_pro">Version Professionelle</string>
+<string name="app_pro">Version Gratuite</string>
 <string name="app_google_plus">Ajoutez-nous sur Google+ pour de l\'information à jour sur Synodroid:</string>
 <string name="tab_about">À propos</string>    
 <string name="tab_help">F.A.Q.</string>    
 <string name="gplus">Recevez du support sur Google+</string>    
-<string name="description_logo">SynoDroid Pro</string>
+<string name="description_logo">SynoDroid</string>
 <string name="description_home">Départ</string>
 <string name="description_search">Recherche</string>
 <string name="description_refresh">Rafraîchir</string>
@@ -407,7 +407,7 @@
 <string name="syno_info_t1">Synodroid à été créé pour contrôler la fonctionalitée de téléchargement du NAS Synology. Si vous n\'en avez pas un, cette application n\'est pas pour vous.</string>
 <string name="syno_info_t2">Si vous avez besoin de plus d\'information à propos des produits de Synology aller voir leur site web:</string>
 <string name="syno_info_t3">Si vous voulez vous procurer un NAS Synology, vous pouvez trouver l\'information à l\'endroit suivant:</string>
-<string name="add_server_title">Ajout de serveurs</string>
+<string name="add_server_title">Ajout de Serveurs</string>
 <string name="add_server_t1">Il y a deux (2) façon d\'ajouter des connections à un serveur Synology. Les deux sont situés dans les paramêtres de l\'application (pesez menu, paramêtre).</string>
 <string name="add_server_st1">Détection de Serveur</string>
 <string name="add_server_t2">La Détection de Serveur exige d\'avoir le Wifi activé et connecté sur le réseau sans-fil ou ce trouve votre NAS. Synodroid essayera the détecter votre NAS sur le réseau et vous affichera une fenêtre avec tout les NAS qui ont été trouvé et vous laissera les configurer correctement.</string>

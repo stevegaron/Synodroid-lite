@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="TypographyEllipsis">
     
-<string name="app_name">Synodroid Pro</string>
+<string name="app_name">Synodroid</string>
 <string name="app_opensource">Opensource project</string>
 <string name="app_url">http://code.google.com/p/synodroid-ds/</string>
 
@@ -356,12 +356,12 @@
 <string name="dialog_message_confirm">&quot;De take is nog niet voltooid. Weet je zeker dat je de take wilt verwijderen?&quot;</string>
 <string name="menu_add">Download toevoegen</string>
 <string name="add_download_url_title">URL:</string>
-<string name="app_pro">Professionele Versie</string>
+<string name="app_pro">Gratis versie</string>
 <string name="app_google_plus">Controleer Synodroid op Google+ voor actuele informatie:</string>
 <string name="tab_about">Over</string>    
 <string name="tab_help">F.A.Q.</string>    
 <string name="gplus">Ondersteuning vragen op Google+</string>    
-<string name="description_logo">SynoDroid Pro</string>
+<string name="description_logo">SynoDroid</string>
 <string name="description_home">Start</string>
 <string name="description_search">Zoeken</string>
 <string name="description_refresh">Vernieuwen</string>
