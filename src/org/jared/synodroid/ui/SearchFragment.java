@@ -112,8 +112,8 @@ public class SearchFragment extends SynodroidFragment {
 		StringBuilder s = new StringBuilder();
 		List<Object[]> sites = getSupportedSites();
 		if (sites != null) {
+			int i = 0;
 			for (Object[] site :sites){
-				int i = 0;
 				s.append((String) site[1]);
 				s.append("\n");
 				if (pref_src.equals((String) site[1])) {
