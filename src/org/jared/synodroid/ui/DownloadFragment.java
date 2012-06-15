@@ -85,6 +85,7 @@ public class DownloadFragment extends SynodroidFragment implements OnCheckedChan
 	private static final String SYNO_PRO_URL_DL_MARKET = "market://details?id=com.bigpupdev.synodroid";
 	private static final String PREFERENCE_HIDE_BANNER = "general_cat.banner";
 	private static final String PREFERENCE_GENERAL = "general_cat";
+	private static final String PREFERENCE_SHOW_GET_STARTED = "general_cat.show_get_started";
 	
 	// The torrent listview
 	public ListView taskView;
@@ -593,9 +594,17 @@ public class DownloadFragment extends SynodroidFragment implements OnCheckedChan
 	public void onResume() {
 		super.onResume();
 		final Activity a = getActivity();
-		
 		SharedPreferences preferences = a.getSharedPreferences(PREFERENCE_GENERAL, Activity.MODE_PRIVATE);
-		if (preferences.getBoolean(PREFERENCE_HIDE_BANNER, false)) {
+        
+        if (preferences.getBoolean(PREFERENCE_SHOW_GET_STARTED, true)){
+			return;
+		}
+        if (!EulaHelper.hasAcceptedEula(a)) {
+	        EulaHelper.showEula(false, a);
+            return;
+        }
+		
+        if (preferences.getBoolean(PREFERENCE_HIDE_BANNER, false)) {
 			goPro.setVisibility(View.GONE);
 		}
 		else{

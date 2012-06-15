@@ -14,7 +14,6 @@ import org.jared.synodroid.adapter.TaskAdapter;
 //import org.jared.synodroid.data.DSMVersion;
 import org.jared.synodroid.data.Task;
 import org.jared.synodroid.utils.ActivityHelper;
-import org.jared.synodroid.utils.EulaHelper;
 import org.jared.synodroid.ui.DownloadPreferenceActivity;
 
 import android.app.Activity;
@@ -193,6 +192,15 @@ public class HomeActivity extends BaseActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
+		
+		SharedPreferences preferences = getSharedPreferences(PREFERENCE_GENERAL, Activity.MODE_PRIVATE);
+        
+        if (preferences.getBoolean(PREFERENCE_SHOW_GET_STARTED, true)) {
+			Intent next = new Intent();
+			next.setClass(HomeActivity.this, GetStartedActivity.class);
+			startActivity(next);
+		}
+        
 		try{
 			if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"HomeActivity: Resuming home activity.");
 		}catch (Exception ex){/*DO NOTHING*/}
@@ -228,23 +236,8 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        if (!EulaHelper.hasAcceptedEula(this)) {
-            EulaHelper.showEula(false, this);
-        }
         setContentView(R.layout.activity_home);
         getActivityHelper().setupActionBar(getString(R.string.app_name), true);
-        
-        SharedPreferences preferences = getSharedPreferences(PREFERENCE_GENERAL, Activity.MODE_PRIVATE);
-        
-        if (preferences.getBoolean(PREFERENCE_SHOW_GET_STARTED, true)) {
-			// Starting new intent
-			preferences.edit().putBoolean(PREFERENCE_SHOW_GET_STARTED, false).commit();
-			
-			Intent next = new Intent();
-			next.setClass(HomeActivity.this, GetStartedActivity.class);
-			startActivity(next);
-		}
     }
 
 
