@@ -46,7 +46,7 @@ public class PreferenceFacade {
 	public static final String SSID_SUFFIX = ".ssid";
 	public static final String WLAN_RADICAL = ".wlan";
 
-	public static final String SERVER_PREFIX = "synodroid_server.";
+	public static final String SERVER_PREFIX = "server_v2.";
 
 	/**
 	 * Load servers from the SharedPreference
