@@ -1,7 +1,7 @@
 <searchable xmlns:android="http://schemas.android.com/apk/res/android"
      android:label="@string/app_name"
      android:hint="@string/search_hint"
-     android:searchSuggestAuthority="org.jared.synodroid.utils.SynodroidSearchSuggestion"
+     android:searchSuggestAuthority="org.jared.synodroid.ds.utils.SynodroidSearchSuggestion"
      android:searchSuggestSelection=" ?"
      android:voiceSearchMode="showVoiceSearchButton|launchRecognizer" >
 </searchable>

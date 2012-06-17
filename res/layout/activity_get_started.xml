@@ -7,7 +7,7 @@
     android:background="@android:color/black">
 	<include layout="@layout/actionbar" />
 	
-	<org.jared.synodroid.utils.CirclePageIndicator 
+	<org.jared.synodroid.ds.utils.CirclePageIndicator 
             android:id="@+id/indicator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
