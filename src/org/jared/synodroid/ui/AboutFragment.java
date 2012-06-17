@@ -9,8 +9,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.text.Html;
-import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,10 +72,42 @@ public class AboutFragment extends Fragment{
 		TextView vname = (TextView) about.findViewById(R.id.app_vers_name_text);
 		vname.setText(vn);
 
-		TextView message = (TextView) about.findViewById(R.id.about_code);
-		message.setText(Html.fromHtml("<a href=\"https://plus.google.com/111893484035545745539\">"+getString(R.string.gplus_title)+"</a>"));
-		message.setMovementMethod(LinkMovementMethod.getInstance());
+		TextView helpBtn = (TextView) about.findViewById(R.id.t_gmail);
+		helpBtn.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				try {
+					final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+					emailIntent.setType("plain/text");
+					emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] { "synodroid@gmail.com" });
+					emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Synodroid Professional - help");
+					startActivity(emailIntent);
+				} catch (Exception e) {
+					AlertDialog.Builder builder = new AlertDialog.Builder(aboutActivity);
+					builder.setMessage(R.string.err_noemail);
+					builder.setTitle(getString(R.string.connect_error_title)).setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int id) {
+							dialog.cancel();
+						}
+					});
+					AlertDialog errorDialog = builder.create();
+					try {
+						errorDialog.show();
+					} catch (BadTokenException ex) {
+						// Unable to show dialog probably because intent has been closed. Ignoring...
+					}
+				}
+			}
+		});
 		
+		TextView gplusBtn = (TextView) about.findViewById(R.id.t_gplus);
+		gplusBtn.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				String url = "https://plus.google.com/111893484035545745539";
+				Intent i = new Intent(Intent.ACTION_VIEW);
+				i.setData(Uri.parse(url));
+				startActivity(i);
+			}
+		});
 		ImageView donate = (ImageView) about.findViewById(R.id.ImgViewDonate);
 		donate.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
