@@ -276,7 +276,7 @@ public class DownloadFragment extends SynodroidFragment implements OnCheckedChan
 			
 			AlertDialog.Builder builder = new AlertDialog.Builder(a);
 			
-			/*if (((Synodroid)a.getApplication()).getServer().getDsmVersion().greaterThen(DSMVersion.VERSION3_1)){
+			/*if (((Synodroid)a.getApplication()).getServer().getDsmVersion().greaterThen(DSMVersion.VERSION3_0)){
 				final SharedFolderSelection sf = (SharedFolderSelection) msg.obj;
 				final String[] dirNames = new String[sf.childrens.size()];
 				final String[] dirIDs = new String[sf.childrens.size()];
@@ -467,7 +467,7 @@ public class DownloadFragment extends SynodroidFragment implements OnCheckedChan
 				
 				if (uri.toString().startsWith("magnet")){
 					try{
-						if (((Synodroid)getActivity().getApplication()).getServer().getDsmVersion().greaterThen(DSMVersion.VERSION3_1)){
+						if (((Synodroid)getActivity().getApplication()).getServer().getDsmVersion().greaterThen(DSMVersion.VERSION3_0)){
 							use_safe = true;
 							out_url = true;
 						}

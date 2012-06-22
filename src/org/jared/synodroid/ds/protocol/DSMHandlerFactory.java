@@ -25,7 +25,6 @@ import org.jared.synodroid.ds.server.SimpleSynoServer;
 
 import org.jared.synodroid.ds.data.DSMVersion;
 import org.jared.synodroid.ds.protocol.v22.DSHandlerDSM22Factory;
-import org.jared.synodroid.ds.protocol.v31.DSHandlerDSM31Factory;
 import org.jared.synodroid.ds.protocol.v32.DSHandlerDSM32Factory;
 import org.jared.synodroid.ds.protocol.v40.DSHandlerDSM40Factory;
 
@@ -59,7 +58,7 @@ public abstract class DSMHandlerFactory {
 		case VERSION3_0:
 			return new DSHandlerDSM22Factory(serverP, debug, autoDetect);
 		case VERSION3_1:
-			return new DSHandlerDSM31Factory(serverP, debug, autoDetect);
+			return new DSHandlerDSM32Factory(serverP, debug, autoDetect);
 		case VERSION3_2:
 			return new DSHandlerDSM32Factory(serverP, debug, autoDetect);
 		case VERSION4_0:
