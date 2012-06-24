@@ -17,6 +17,7 @@
 package org.jared.synodroid.ds.utils;
 
 import org.jared.synodroid.ds.R;
+import org.jared.synodroid.ds.ui.DownloadFragment;
 import org.jared.synodroid.ds.ui.HomeActivity;
 
 import android.app.Activity;
@@ -71,7 +72,19 @@ public class ActivityHelper {
             MenuItem item = menu.getItem(i);
             if (item.getOrder() == 0) 
             	addActionButtonCompatFromMenuItem(item);
-        }    
+        }
+        
+        //ActionMode menus
+        ViewGroup actionMode = (ViewGroup) mActivity.findViewById(R.id.actionmode_compat);
+    	
+        if (actionMode != null){
+	        SimpleMenu actionMenu = new SimpleMenu(mActivity);
+	        mActivity.getMenuInflater().inflate(R.menu.action_mode_menu, actionMenu);
+	        for (int i = 0; i < actionMenu.size(); i++) {
+	            MenuItem item = actionMenu.getItem(i);
+	            addActionButtonCompatFromMenuItem(actionMode, item, null);
+	        }
+        }
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -136,9 +149,9 @@ public class ActivityHelper {
             return;
         }
 
-        TextView titleText = (TextView) actionBar.findViewById(R.id.actionbar_compat_text);
-        if (titleText != null) {
-            titleText.setOnClickListener(ocl);
+        ImageButton logo = (ImageButton) actionBar.findViewById(R.id.actionbar_compat_logo);
+        if (logo != null) {
+        	logo.setOnClickListener(ocl);
         }
     }
     
@@ -160,7 +173,7 @@ public class ActivityHelper {
         secLayoutParams.gravity = 0x10;
         secLayoutParams.leftMargin = 4;
         
-        View.OnClickListener homeClickListener = new View.OnClickListener() {
+        OnClickListener homeClickListener = new OnClickListener() {
             public void onClick(View view) {
                 goHome();
             }
@@ -182,6 +195,20 @@ public class ActivityHelper {
         titleText.setLayoutParams(springLayoutParams);
         titleText.setText(title);
         actionBarCompat.addView(titleText);
+        
+        //ACTION MODE STUFF
+        ViewGroup actionMode = (ViewGroup) mActivity.findViewById(R.id.actionmode_compat);
+        
+        if (actionMode != null){        	
+        	addActionButtonCompat(actionMode, R.attr.actionmodeCompatLogoStyle, R.drawable.actionmode_compat_logo, R.string.description_home,
+        			null, true);
+        	
+            // Add title text
+            TextView actionText = new TextView(mActivity, null, R.attr.actionmodeCompatTextStyle);
+            actionText.setLayoutParams(springLayoutParams);
+            actionText.setText("");
+            actionMode.addView(actionText);
+        }
     }
 
     /**
@@ -216,16 +243,11 @@ public class ActivityHelper {
     /**
      * Adds an action bar button to the compatibility action bar (on phones).
      */
-    private View addActionButtonCompat(int iconResId, int textResId,
-            View.OnClickListener clickListener, boolean separatorAfter) {
-        final ViewGroup actionBar = getActionBarCompat();
-        if (actionBar == null) {
-            return null;
-        }
-
-        // Create the button
+    private View addActionButtonCompat(ViewGroup actionBar, int style, int iconResId, int textResId,
+            OnClickListener clickListener, boolean separatorAfter) {
+    	// Create the button
         ImageButton actionButton = new ImageButton(mActivity, null,
-                R.attr.actionbarCompatButtonStyle);
+        		style);
         actionButton.setLayoutParams(new ViewGroup.LayoutParams(
                 (int) mActivity.getResources().getDimension(R.dimen.actionbar_compat_height),
                 ViewGroup.LayoutParams.FILL_PARENT));
@@ -241,6 +263,15 @@ public class ActivityHelper {
 
         return actionButton;
     }
+    private View addActionButtonCompat(int iconResId, int textResId,
+            OnClickListener clickListener, boolean separatorAfter) {
+        final ViewGroup actionBar = getActionBarCompat();
+        if (actionBar == null) {
+            return null;
+        }
+        return addActionButtonCompat(actionBar, R.attr.actionbarCompatButtonStyle, iconResId, textResId,
+                clickListener, separatorAfter);
+    }
 
     /**
      * Adds an action button to the compatibility action bar, using menu information from a
@@ -249,12 +280,20 @@ public class ActivityHelper {
      * {@link ActivityHelper#setRefreshActionButtonCompatState(boolean)}.
      */
     private View addActionButtonCompatFromMenuItem(final MenuItem item) {
-        final ViewGroup actionBar = getActionBarCompat();
+    	final ViewGroup actionBar = getActionBarCompat();
         if (actionBar == null) {
             return null;
         }
-
-        // Create the button
+        OnClickListener ocl = new View.OnClickListener() {
+            public void onClick(View view) {
+                mActivity.onMenuItemSelected(Window.FEATURE_OPTIONS_PANEL, item);
+            }
+        };
+        return addActionButtonCompatFromMenuItem(actionBar, item, ocl);
+    }	
+    
+    private View addActionButtonCompatFromMenuItem(ViewGroup actionBar, final MenuItem item, OnClickListener l) {
+             // Create the button
         ImageButton actionButton = new ImageButton(mActivity, null,
                 R.attr.actionbarCompatButtonStyle);
         actionButton.setId(item.getItemId());
@@ -264,11 +303,8 @@ public class ActivityHelper {
         actionButton.setImageDrawable(item.getIcon());
         actionButton.setScaleType(ImageView.ScaleType.CENTER);
         actionButton.setContentDescription(item.getTitle());
-        actionButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                mActivity.onMenuItemSelected(Window.FEATURE_OPTIONS_PANEL, item);
-            }
-        });
+        if (l != null)
+        	actionButton.setOnClickListener(l);
 
         actionBar.addView(actionButton);
 
@@ -308,5 +344,51 @@ public class ActivityHelper {
         if (refreshIndicator != null) {
             refreshIndicator.setVisibility(refreshing ? View.VISIBLE : View.GONE);
         }
+    }
+    
+    public void stopActionMode(){
+    	View actionBar = mActivity.findViewById(R.id.actionbar_compat);
+        View actionMode = mActivity.findViewById(R.id.actionmode_compat);
+        
+        if (actionBar != null){
+        	actionBar.setVisibility(View.VISIBLE);
+        }
+
+        if (actionMode != null){
+        	actionMode.setVisibility(View.GONE);
+        }
+    }
+    
+    public void startActionMode(DownloadFragment fragment, OnClickListener cancelClickListener,
+    		OnClickListener clearClickListener, OnClickListener resumeClickListener,
+    		OnClickListener pauseClickListener){
+    	ViewGroup actionBar = (ViewGroup) mActivity.findViewById(R.id.actionbar_compat);
+    	ViewGroup actionMode = (ViewGroup) mActivity.findViewById(R.id.actionmode_compat);
+        
+        if (actionBar != null){
+        	actionBar.setVisibility(View.GONE);
+        }
+
+        if (actionMode != null){
+        	actionMode.setVisibility(View.VISIBLE);
+        	ImageButton logo = (ImageButton) actionMode.findViewById(R.id.actionmode_compat_logo);
+        	logo.setOnClickListener(cancelClickListener);
+        	
+        	ImageButton clear = (ImageButton) actionMode.findViewById(R.id.menu_clear);
+        	ImageButton pause = (ImageButton) actionMode.findViewById(R.id.menu_pause);
+        	ImageButton resume = (ImageButton) actionMode.findViewById(R.id.menu_resume);
+        	clear.setOnClickListener(clearClickListener);
+        	pause.setOnClickListener(pauseClickListener);
+        	resume.setOnClickListener(resumeClickListener);
+        }
+    }
+    
+    public void setActionModeTitle(String title){
+    	ViewGroup actionMode = (ViewGroup) mActivity.findViewById(R.id.actionmode_compat);
+    	
+    	if (actionMode != null){
+    		TextView titleText = (TextView) actionMode.findViewById(R.id.actionmode_compat_text);
+    		titleText.setText(title);
+    	}
     }
 }
