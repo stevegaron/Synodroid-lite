@@ -373,7 +373,7 @@
 <string name="gplus_title">Page Google+ de Synodroid</string>
    
 <string name="tasks">tâche(s)</string>
-<string name="magnet">Les liens Magnet ne fonctionnent seulement qu\'avec DSM 3.2 et plus...</string>
+<string name="magnet">Les liens Magnet ne fonctionnent seulement qu\'avec DSM 3.1 et plus...</string>
 <string name="update_search_engine">Mise-à-jour du moteur de recherche</string>
 <string name="update_search_engine_toast">Téléchargement de la dernière version du moteur de recherche.</string>
     

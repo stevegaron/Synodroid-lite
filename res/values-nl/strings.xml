@@ -395,7 +395,7 @@
 <string name="syno_pro_banner_text">Krijg de nieuwe functies van Synodroid Pro. Klik hier!</string>
 <string name="err_nomarket_upgrade">Android market is niet geïnstalleerd op je toestel.\n\nContacteer de ontwikkelaars van Synodroid voor een kopie van Synodroid Pro.</string>
 
-<string name="provider_missing">Er is geen zoekmachine geïnstalleerd. Je kan je NAS updaten naar DSM 3.2+ of een zoekmachine installeren door op de onderstaande knop te klikken.\n\n Let op: Je zal Synodroid moeten herstarten om de zoekmachine te kunnen gebruiken...</string>
+<string name="provider_missing">Er is geen zoekmachine geïnstalleerd. Je kan je NAS updaten naar DSM 3.1+ of een zoekmachine installeren door op de onderstaande knop te klikken.\n\n Let op: Je zal Synodroid moeten herstarten om de zoekmachine te kunnen gebruiken...</string>
 <string name="err_provider_missing">Er is geen zoekmachine geïnstalleerd.\n\nVolg de instructies op deze pagina om er een te installeren.</string>
 <string name="welcome">Welkom bij Synodroid!</string>
 <string name="get_started">Synodroid Tutorial</string>
