@@ -14,14 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager.BadTokenException;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.jared.synodroid.ds.R;
 import org.jared.synodroid.ds.Synodroid;
-import org.jared.synodroid.ds.utils.EulaHelper;
 
 public class AboutFragment extends Fragment{
 	private static final String SYNO_PRO_URL_DL_MARKET = "market://details?id=com.bigpupdev.synodroid";
@@ -46,18 +44,6 @@ public class AboutFragment extends Fragment{
 		
 		final FragmentActivity aboutActivity = this.getActivity();
 		View about = inflater.inflate(R.layout.about, null, false);
-		Button eulaBtn = (Button) about.findViewById(R.id.id_eula_view);
-		eulaBtn.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				// Diplay the EULA
-				try {
-					EulaHelper.showEula(true, aboutActivity);
-				} catch (BadTokenException e) {
-					// Unable to show dialog probably because intent has been closed. Ignoring...
-				}
-			}
-		});
-
 		String vn = "" + getString(R.string.app_name);
 		try {
 			PackageInfo pi = aboutActivity.getPackageManager().getPackageInfo(aboutActivity.getPackageName(), 0);

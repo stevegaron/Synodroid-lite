@@ -11,12 +11,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.WindowManager.BadTokenException;
 
 import org.jared.synodroid.ds.R;
 import org.jared.synodroid.ds.Synodroid;
 import org.jared.synodroid.ds.utils.ViewPagerIndicator;
+import org.jared.synodroid.ds.utils.EulaHelper;
 
 public class AboutActivity extends BaseActivity{
 	private static final String PREFERENCE_FULLSCREEN = "general_cat.fullscreen";
@@ -30,6 +34,26 @@ public class AboutActivity extends BaseActivity{
 	public void onConfigurationChanged(Configuration newConfig) {
 		// ignore orientation change
 		super.onConfigurationChanged(newConfig);
+	}
+	
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.menu_about, menu);
+        super.onCreateOptionsMenu(menu);
+        return true;
+    }
+	
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_licence){
+        	// Diplay the EULA
+			try {
+				EulaHelper.showEula(true, this);
+			} catch (BadTokenException e) {
+				// Unable to show dialog probably because intent has been closed. Ignoring...
+			}
+        }
+        return super.onOptionsItemSelected(item);
 	}
 	
 	/**

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/about_l"
     android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:layout_height="fill_parent">
-    
-	<LinearLayout
+    tools:ignore="UseCompoundDrawables" >
+
+    <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/upgrade"
         android:layout_width="fill_parent"
@@ -16,184 +17,179 @@
         android:orientation="horizontal" >
 
         <ImageView
-	                android:id="@+id/ImageView01"
-	                android:layout_width="wrap_content"
-	                android:layout_height="wrap_content"
-	                android:src="@drawable/banner_icon"/>
-		<TextView
-		    android:id="@+id/pro_text"
-		    android:layout_width="fill_parent"
-		    android:layout_height="match_parent"
-		    android:layout_gravity="center_vertical"
-		    android:background="@drawable/banner"
-		    android:text="@string/syno_pro_banner_text"
-		    android:textAppearance="?android:attr/textAppearanceMedium" android:paddingLeft="5dip" android:paddingRight="5dip"/>
-    
+            android:id="@+id/ImageView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/banner_icon" />
+
+        <TextView
+            android:id="@+id/pro_text"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/banner"
+            android:paddingLeft="5dip"
+            android:paddingRight="5dip"
+            android:text="@string/syno_pro_banner_text"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
-	<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-	    xmlns:tools="http://schemas.android.com/tools"
-	    android:id="@+id/about_scroll"
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
-	    android:isScrollContainer="true"
-	    android:layout_above="@+id/upgrade"
-	    tools:ignore="HardcodedText" >
-	
-	    <LinearLayout
-	        android:id="@+id/LinearLayout01"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:orientation="vertical" >
-	
-	        <LinearLayout
-	            android:id="@+id/LinearLayout02"
-	            android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
-	            android:layout_marginLeft="25dip"
-	            android:layout_marginTop="25dip"
-	            android:gravity="top"
-	            android:orientation="horizontal" >
-	
-	            <ImageView
-	                android:id="@+id/ImageView014"
-	                android:layout_width="wrap_content"
-	                android:layout_height="wrap_content"
-	                android:src="@drawable/ic_launcher" />
-	
-	            <LinearLayout
-	                android:id="@+id/LinearLayout04"
-	                android:layout_width="fill_parent"
-	                android:layout_height="wrap_content"
-	                android:gravity="center_vertical"
-	                android:orientation="vertical"
-	                android:paddingRight="10dip" >
-	
-	                <TextView
-	                    android:id="@+id/app_vers_name_text"
-	                    android:layout_width="wrap_content"
-	                    android:layout_height="wrap_content"
-	                    android:text="@string/app_name"
-	                    android:textAppearance="?android:attr/textAppearanceLarge" />
-	
-	                <TextView
-	                    android:id="@+id/TextView04"
-	                    android:layout_width="wrap_content"
-	                    android:layout_height="wrap_content"
-	                    android:text="@string/app_pro" />
-	            </LinearLayout>
-	        </LinearLayout>
-			<ImageView
-		        android:id="@+id/ImgViewDonate"
-		        android:layout_marginTop="15dip"
-	            android:gravity="center_horizontal"
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		        android:src="@drawable/btn_donate"/>
-	        <LinearLayout
-	            android:id="@+id/LinearLayout03"
-	            android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
-	            android:layout_marginLeft="50dip"
-	            android:layout_marginTop="15dip"
-	            android:orientation="vertical" >
-	
-	            <TextView
-	                android:id="@+id/tvContrib"
-	                android:layout_width="wrap_content"
-	                android:layout_height="wrap_content"
-	                android:text="@string/app_contributors"
-	                android:textAppearance="?android:attr/textAppearanceLarge" />
-	
-	            <TextView
-	                android:id="@+id/tvEric"
-	                android:layout_width="wrap_content"
-	                android:layout_height="wrap_content"
-	                android:layout_marginTop="8dip"
-	                android:text="- Eric Taix"
-	                android:textAppearance="?android:attr/textAppearanceMedium" />
-	
-	            <TextView
-	                android:id="@+id/tvSteve"
-	                android:layout_width="wrap_content"
-	                android:layout_height="wrap_content"
-	                android:layout_marginTop="8dip"
-	                android:text="- Steve Garon"
-	                android:textAppearance="?android:attr/textAppearanceMedium" />
-	
-	            <TextView
-	                android:id="@+id/tvTranslators"
-	                android:layout_width="wrap_content"
-	                android:layout_height="wrap_content"
-	                android:layout_marginTop="16dip"
-	                android:text="@string/translator"
-	                android:textAppearance="?android:attr/textAppearanceLarge" />
-	
-	            <TextView
-	                android:id="@+id/tvIgnacio"
-	                android:layout_width="wrap_content"
-	                android:layout_height="wrap_content"
-	                android:layout_marginTop="8dip"
-	                android:text="- Ignacio Diez (es)"
-	                android:textAppearance="?android:attr/textAppearanceMedium" />
-	
-	            <TextView
-	                android:id="@+id/tvMatthias"
-	                android:layout_width="wrap_content"
-	                android:layout_height="wrap_content"
-	                android:layout_marginTop="8dip"
-	                android:text="- Matthias Kutscheid (de)"
-	                android:textAppearance="?android:attr/textAppearanceMedium" />
-	
-	            <TextView
-	                android:id="@+id/TextView01"
-	                android:layout_width="wrap_content"
-	                android:layout_height="wrap_content"
-	                android:layout_marginTop="8dip"
-	                android:text="- Gino Jongenelen (nl)"
-	                android:textAppearance="?android:attr/textAppearanceMedium" >
-	            </TextView>
-	        </LinearLayout>
-	
-	        <LinearLayout
-	            android:id="@+id/LinearLayout05"
-	            android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
-	            android:layout_marginBottom="25dip"
-	            android:gravity="center_horizontal"
-	 	 		android:orientation="vertical" >
-	
-	            <TextView
- 	 				android:id="@+id/t_gplus"
- 	           		android:layout_width="wrap_content"
- 	           		android:layout_height="wrap_content"
- 	           		android:layout_marginTop="20dip"
- 	           		android:drawableLeft="@drawable/gplus"
- 	           		android:gravity="center_vertical"
- 	           		android:text="@string/gplus"
- 	 	       		android:textAppearance="?android:attr/textAppearanceMedium" />
- 	 			
- 	 			<TextView
-	 	            android:id="@+id/t_gmail"
-	 	            android:layout_width="wrap_content"
-	 	            android:layout_height="wrap_content"
-	 	            android:layout_marginTop="20dip"
-	 	            android:drawableLeft="@drawable/gmail"
-	 	            android:gravity="center_vertical"
-	 	            android:text="@string/email"
-	 	            android:textAppearance="?android:attr/textAppearanceMedium" />
- 	 			
-	            <Button
-	                android:id="@+id/id_eula_view"
-	                android:layout_width="wrap_content"
-	                android:layout_height="wrap_content"
-	                android:layout_marginTop="20dip"
-	                android:paddingBottom="5dip"
-	                android:paddingLeft="30dip"
-	                android:paddingRight="30dip"
-	                android:paddingTop="3dip"
-	                android:text="@string/eula_view" />
-	        </LinearLayout>
-	    </LinearLayout>
-	
-	</ScrollView>
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/about_scroll"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/upgrade"
+        android:isScrollContainer="true"
+        tools:ignore="HardcodedText" >
+
+        <LinearLayout
+            android:id="@+id/LinearLayout01"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/LinearLayout02"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dip"
+                android:layout_marginTop="25dip"
+                android:gravity="top"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/ImageView014"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_launcher" />
+
+                <LinearLayout
+                    android:id="@+id/LinearLayout04"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingRight="10dip" >
+
+                    <TextView
+                        android:id="@+id/app_vers_name_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_name"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/TextView04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_pro" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ImgViewDonate"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dip"
+                android:gravity="center_horizontal"
+                android:src="@drawable/btn_donate" />
+
+            <LinearLayout
+                android:id="@+id/LinearLayout03"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dip"
+                android:layout_marginTop="15dip"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/tvContrib"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_contributors"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/tvEric"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dip"
+                    android:text="- Eric Taix"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
+                    android:id="@+id/tvSteve"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dip"
+                    android:text="- Steve Garon"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
+                    android:id="@+id/tvTranslators"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dip"
+                    android:text="@string/translator"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/tvIgnacio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dip"
+                    android:text="- Ignacio Diez (es)"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
+                    android:id="@+id/tvMatthias"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dip"
+                    android:text="- Matthias Kutscheid (de)"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
+                    android:id="@+id/TextView01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dip"
+                    android:text="- Gino Jongenelen (nl)"
+                    android:textAppearance="?android:attr/textAppearanceMedium" >
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout05"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dip"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/t_gplus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dip"
+                    android:drawableLeft="@drawable/gplus"
+                    android:gravity="center_vertical"
+                    android:text="@string/gplus"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
+                    android:id="@+id/t_gmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dip"
+                    android:drawableLeft="@drawable/gmail"
+                    android:gravity="center_vertical"
+                    android:text="@string/email"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 </RelativeLayout>
