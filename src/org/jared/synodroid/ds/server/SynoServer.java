@@ -75,7 +75,7 @@ public class SynoServer extends SimpleSynoServer{
 	// Flag to stop the server's collector
 	private boolean stop;
 	// Flag to pause the thread until it is interrupted
-	private boolean pause;
+	volatile private boolean pause;
 	// The data's collector thread
 	private Thread collector;
 	
@@ -193,11 +193,9 @@ public class SynoServer extends SimpleSynoServer{
 										}
 									}
 									// If the thread is paused
-									synchronized (this) {
-										if (pause) {
-											silentMode = true;
-											wait();
-										}
+									if (pause) {
+										silentMode = true;
+										wait();
 									}
 								}
 							}
@@ -698,14 +696,14 @@ public class SynoServer extends SimpleSynoServer{
 	/**
 	 * Pause the server's thread
 	 */
-	synchronized public void pause() {
+	public void pause() {
 		pause = true;
 	}
 
 	/**
 	 * Resume the server's thread
 	 */
-	synchronized public void resume() {
+	public void resume() {
 		pause = false;
 		collector.interrupt();
 	}
