@@ -284,14 +284,27 @@ public class DownloadPreferenceActivity extends BasePreferenceActivity implement
 		if (hasFocus) {
 			SharedPreferences preferences = getSharedPreferences(PREFERENCE_AUTO, Activity.MODE_PRIVATE);
 			if (preferences.getBoolean(PREFERENCE_AUTO_CREATENOW, false)) {
-				if (!UIUtils.isHoneycomb()){
-					openOptionsMenu();
-				}
+				autoCreate();
 				preferences.edit().putBoolean(PREFERENCE_AUTO_CREATENOW, false).commit();
 			}
 		}
 	}
 
+	private void autoCreate(){
+		WifiManager wifiMgr = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+		boolean wifiOn = wifiMgr.isWifiEnabled();
+		final WifiInfo currentWifi = wifiMgr.getConnectionInfo();
+		boolean wifiConnected = (wifiOn && currentWifi.getNetworkId() != -1);
+		if (wifiConnected) {
+			ServerWizard wiz = new ServerWizard(this, wifiMgr.getConnectionInfo().getSSID(), ((Synodroid)getApplication()).DEBUG);
+			wiz.start();
+		}
+		else{
+			AddServerWizard wiz = new AddServerWizard(this, ((Synodroid)getApplication()).DEBUG);
+			wiz.start();
+		}
+	}
+	
 	/**
 	 * Create the option menu of this activity
 	 */
@@ -299,7 +312,7 @@ public class DownloadPreferenceActivity extends BasePreferenceActivity implement
 		getMenuInflater().inflate(R.menu.pref_menus, menu);
 		return true;
 	}
-
+	
 	/*
 	 * (non-Javadoc)
 	 * 
