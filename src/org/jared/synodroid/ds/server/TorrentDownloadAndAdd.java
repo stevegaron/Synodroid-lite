@@ -72,7 +72,7 @@ public class TorrentDownloadAndAdd extends AsyncTask<String, Void, Uri> {
 		try {
 			URL url = new URL(uri.toString()); // you can write here any link
 			File path = Environment.getExternalStorageDirectory();
-			path = new File(path, "Android/data/org.jared.synodroid.ds/");
+			path = new File(path, "Android/data/org.jared.synodroid.ds/cache/");
 			path.mkdirs();
 			String temp[] = uri.toString().split("/");
 			String fname = temp[(temp.length) - 1];

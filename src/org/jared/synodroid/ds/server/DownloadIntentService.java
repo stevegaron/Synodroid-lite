@@ -57,7 +57,7 @@ public class DownloadIntentService extends IntentService{
 		try {
 			URL url = new URL(uri); // you can write here any link
 			File path = Environment.getExternalStorageDirectory();
-			path = new File(path, "Android/data/org.jared.synodroid.ds/");
+			path = new File(path, "Android/data/org.jared.synodroid.ds/cache/");
 			path.mkdirs();
 			if (!fname.toLowerCase().endsWith(".torrent") && !fname.toLowerCase().endsWith(".nzb")) {
 				fname += ".torrent";

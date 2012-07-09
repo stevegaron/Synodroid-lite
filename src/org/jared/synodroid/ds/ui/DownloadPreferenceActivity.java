@@ -7,6 +7,12 @@
  */
 package org.jared.synodroid.ds.ui;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -34,16 +40,19 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.DialogInterface.OnMultiChoiceClickListener;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
@@ -57,6 +66,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.view.WindowManager.BadTokenException;
 import android.widget.BaseAdapter;
 import android.widget.Toast;
 
@@ -78,7 +88,8 @@ public class DownloadPreferenceActivity extends BasePreferenceActivity implement
 	private static final String PREFERENCE_AUTO_CREATENOW = "auto.createnow";
 	private static final String PREFERENCE_FULLSCREEN = "general_cat.fullscreen";
 	private static final String PREFERENCE_GENERAL = "general_cat";
-	private static final String PREFERENCE_DEBUG_LOG = "general_cat.debug_logging";
+	private static final String PREFERENCE_DEBUG = "debug_cat";
+	private static final String PREFERENCE_DEBUG_LOG = "debug_cat.debug_logging";
 	//private static final String PREFERENCE_AUTO_DSM = "general_cat.auto_detect_DSM";
 	private static final String PREFERENCE_HIDE_BANNER = "general_cat.banner";
 	
@@ -197,14 +208,30 @@ public class DownloadPreferenceActivity extends BasePreferenceActivity implement
 			}
 		});
 		
+		final Preference clearHistory = new Preference(this);
+		clearHistory.setTitle(R.string.clear_search_history);
+		generalCategory.addPreference(clearHistory);
+		clearHistory.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+
+			public boolean onPreferenceClick(Preference arg0) {
+				clearSearchHistory();
+				Toast toast = Toast.makeText(DownloadPreferenceActivity.this, getString(R.string.cleared_search_history), Toast.LENGTH_SHORT);
+				toast.show();
+				return false;
+			}
+
+		});
+		
+		PreferenceCategory debugPreference = (PreferenceCategory) prefScreen.getPreferenceManager().findPreference(PREFERENCE_DEBUG);
+		
 		final CheckBoxPreference dbgLog = new CheckBoxPreference(this);
 		dbgLog.setKey(PREFERENCE_DEBUG_LOG);
 		dbgLog.setTitle(R.string.debug);
 		dbgLog.setSummary(R.string.hint_debug);
-		generalCategory.addPreference(dbgLog);
+		debugPreference.addPreference(dbgLog);
 		dbgLog.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
-				SharedPreferences preferences = getSharedPreferences(PREFERENCE_GENERAL, Activity.MODE_PRIVATE);
+				SharedPreferences preferences = getSharedPreferences(PREFERENCE_DEBUG, Activity.MODE_PRIVATE);
 				if (newValue.toString().equals("true")) {
 					preferences.edit().putBoolean(PREFERENCE_DEBUG_LOG, true).commit();
 					((Synodroid)getApplication()).enableDebugLog();
@@ -215,16 +242,14 @@ public class DownloadPreferenceActivity extends BasePreferenceActivity implement
 				return true;
 			}
 		});
-		
-		final Preference clearHistory = new Preference(this);
-		clearHistory.setTitle(R.string.clear_search_history);
-		generalCategory.addPreference(clearHistory);
-		clearHistory.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+
+		final Preference sendDebugLogs = new Preference(this);
+		sendDebugLogs.setTitle(R.string.send_debug_logs);
+		debugPreference.addPreference(sendDebugLogs);
+		sendDebugLogs.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 
 			public boolean onPreferenceClick(Preference arg0) {
-				clearSearchHistory();
-				Toast toast = Toast.makeText(DownloadPreferenceActivity.this, getString(R.string.cleared_search_history), Toast.LENGTH_SHORT);
-				toast.show();
+				sendDebugLogs();
 				return false;
 			}
 
@@ -242,6 +267,80 @@ public class DownloadPreferenceActivity extends BasePreferenceActivity implement
         	getActivityHelper().setupSubActivity();
         }
     }
+	
+	private void sendDebugLogs() {
+		Process mLogcatProc = null;
+		BufferedReader reader = null;
+		try {
+		        mLogcatProc = Runtime.getRuntime().exec(new String[]
+		                {"logcat", "-d", Synodroid.DS_TAG+":V *:S" });
+
+		        reader = new BufferedReader(new InputStreamReader(mLogcatProc.getInputStream()));
+
+		        String line;
+		        final StringBuilder log = new StringBuilder();
+		        String separator = System.getProperty("line.separator"); 
+
+		        while ((line = reader.readLine()) != null) {
+		                log.append(line);
+		                log.append(separator);
+		        }
+		        
+		        String logs = log.toString();
+		        
+		        if (!logs.equals("")){
+			        File out_path = Environment.getExternalStorageDirectory();
+					out_path = new File(out_path, "Android/data/org.jared.synodroid.ds/cache/");
+					File file = new File(out_path, "debug_log.txt");
+					try {
+						// Make sure the Pictures directory exists.
+						out_path.mkdirs();
+						OutputStream os = new FileOutputStream(file);
+						os.write(logs.getBytes());
+						os.close();
+						try {
+							final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+							emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] { "synodroid@gmail.com" });
+							emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Synodroid Free - Debug log");
+							emailIntent.setType("plain/text");
+							emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + file.getAbsolutePath()));
+							startActivity(emailIntent);
+						} catch (Exception e) {
+							AlertDialog.Builder builder = new AlertDialog.Builder(this);
+							builder.setMessage(R.string.err_noemail);
+							builder.setTitle(getString(R.string.connect_error_title)).setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int id) {
+									dialog.cancel();
+								}
+							});
+							AlertDialog errorDialog = builder.create();
+							try {
+								errorDialog.show();
+							} catch (BadTokenException ex) {
+								// Unable to show dialog probably because intent has been closed. Ignoring...
+							}
+						}
+					} catch (Exception e) {
+						// Unable to create file, likely because external storage is
+						// not currently mounted.
+						try{
+							Log.e(Synodroid.DS_TAG, "Error writing " + file + " to SDCard.", e);
+						}catch (Exception ex){/*DO NOTHING*/}
+					}
+		        }
+		        else{
+		        	
+		        }
+		}
+		catch (IOException e){}
+		finally{
+		        if (reader != null)
+		                try{
+		                        reader.close();
+		                }
+		                catch (IOException e){}
+		}
+	}
 	
 	private void clearSearchHistory() {
 		SearchRecentSuggestions suggestions = new SearchRecentSuggestions(this, SynodroidSearchSuggestion.AUTHORITY, SynodroidSearchSuggestion.MODE);

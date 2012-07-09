@@ -4,8 +4,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:key="synodroid_preference"
   android:title="@string/title_preference"
-  android:summary="A sample summary"
->
+  android:summary="A sample summary">
   <PreferenceCategory
     android:key="general_cat"
     android:title="@string/title_cat_general"
@@ -14,13 +13,17 @@
       android:title="@string/label_asc_sort"
       android:summaryOn="@string/hint_asc_sort_on"
       android:key="asc"
-    android:summaryOff="@string/hint_asc_sort_off"></CheckBoxPreference>
+      android:summaryOff="@string/hint_asc_sort_off">
+    </CheckBoxPreference>
   </PreferenceCategory>
   <PreferenceCategory
-    android:summary="Cat1 summary"
-    android:title="@string/title_cat_servers"
+    android:title="@string/title_cat_debug"
+ 	android:key="debug_cat"
+ 	android:persistent="true">
+  </PreferenceCategory>
+  <PreferenceCategory  
+ 	android:title="@string/title_cat_servers"
     android:key="servers_cat"
-    android:persistent="true"
-  >
+    android:persistent="true">
   </PreferenceCategory>
 </PreferenceScreen>
