@@ -158,7 +158,7 @@ public class SynoServer extends SimpleSynoServer{
 						doConnection(false);
 						// If the action's queue is not empty
 						if (actionQueueP != null) {
-							if (DEBUG) Log.d(Synodroid.DS_TAG, "There are items to execute in the queue...");
+							if (DEBUG) Log.v(Synodroid.DS_TAG, "There are items to execute in the queue...");
 							for (SynoAction taskAction : actionQueueP) {
 								executeAsynchronousAction(handler, taskAction, false);
 							}
@@ -203,7 +203,7 @@ public class SynoServer extends SimpleSynoServer{
 							}
 							// Nothing to do. It may be a force refresh after an action!
 							catch (InterruptedException iex) {
-								if (DEBUG) Log.d(Synodroid.DS_TAG, "Been interrupted while sleeping...");
+								if (DEBUG) Log.v(Synodroid.DS_TAG, "Been interrupted while sleeping...");
 								setInterrupted(true);
 							}
 							// All others exceptions
@@ -239,7 +239,7 @@ public class SynoServer extends SimpleSynoServer{
 						synchronized (this){
 							connected = false;
 						}
-						if (DEBUG) Log.d(Synodroid.DS_TAG, "Server forced to reconnect.");
+						if (DEBUG) Log.v(Synodroid.DS_TAG, "Server forced to reconnect.");
 					}
 				}
 			};
@@ -285,7 +285,7 @@ public class SynoServer extends SimpleSynoServer{
 		connected = false;
 		stop = true;
 		collector.interrupt();
-		if (DEBUG) Log.d(Synodroid.DS_TAG, "Server disconnected.");
+		if (DEBUG) Log.v(Synodroid.DS_TAG, "Server disconnected.");
 	}
 
 	/**
@@ -360,7 +360,7 @@ public class SynoServer extends SimpleSynoServer{
 				String mapMessage = map.get(jsoReason);
 				if (mapMessage == null) {
 					msg += ": " + jsoReason;
-					if (DEBUG) Log.d(Synodroid.DS_TAG, "JSON's error not trapped: " + jsoReason);
+					if (DEBUG) Log.e(Synodroid.DS_TAG, "JSON's error not trapped: " + jsoReason);
 				} else {
 					msg = "DSM Error: " + mapMessage;
 				}
@@ -492,7 +492,7 @@ public class SynoServer extends SimpleSynoServer{
 	synchronized public void setNickname(String nickname) {
 		this.nickname = nickname;
 		connected = false;
-		if (DEBUG) Log.d(Synodroid.DS_TAG, "Server nickname updated.");
+		if (DEBUG) Log.v(Synodroid.DS_TAG, "Server nickname updated.");
 	}
 
 	/**
@@ -502,7 +502,7 @@ public class SynoServer extends SimpleSynoServer{
 	synchronized public void setUser(String user) {
 		this.user = user;
 		connected = false;
-		if (DEBUG) Log.d(Synodroid.DS_TAG, "Username updated on server.");
+		if (DEBUG) Log.v(Synodroid.DS_TAG, "Username updated on server.");
 	}
 
 	/**
@@ -512,7 +512,7 @@ public class SynoServer extends SimpleSynoServer{
 	synchronized public void setPassword(String password) {
 		this.password = password;
 		connected = false;
-		if (DEBUG) Log.d(Synodroid.DS_TAG, "Password updated on server.");
+		if (DEBUG) Log.v(Synodroid.DS_TAG, "Password updated on server.");
 	}
 
 	/**
@@ -523,7 +523,7 @@ public class SynoServer extends SimpleSynoServer{
 		if (reconnect) connected = false;
 		
 		if (!this.dsmVersion.equals(dsmVersion)){
-			if (DEBUG) Log.d(Synodroid.DS_TAG, "DSM Handler switching from "+this.dsmVersion.getTitle()+" to "+ dsmVersion.getTitle());
+			if (DEBUG) Log.i(Synodroid.DS_TAG, "DSM Handler switching from "+this.dsmVersion.getTitle()+" to "+ dsmVersion.getTitle());
 			this.dsmVersion = dsmVersion;
 			// Create the appropriated factory
 			dsmFactory = DSMHandlerFactory.getFactory(dsmVersion, this, DEBUG, autoDetect);
@@ -585,7 +585,7 @@ public class SynoServer extends SimpleSynoServer{
 			public void run() {
 				// An operation is pending
 				fireMessage(handlerP, ResponseHandler.MSG_OPERATION_PENDING);
-				if (DEBUG) Log.d(Synodroid.DS_TAG, "Executing action: " + actionP.getName());
+				if (DEBUG) Log.v(Synodroid.DS_TAG, "Executing action: " + actionP.getName());
 				
 				//Kill toast if it is a safe addTaskAction...
 				try{
@@ -642,7 +642,7 @@ public class SynoServer extends SimpleSynoServer{
 				synchronized (this){
 					cookies = newCookie;
 				}
-				if (DEBUG) Log.d(Synodroid.DS_TAG, "Retreived cookies: " + cookies);
+				if (DEBUG) Log.v(Synodroid.DS_TAG, "Retreived cookies: " + cookies);
 			}
 			// Now read the reponse and build a string with it
 			BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));

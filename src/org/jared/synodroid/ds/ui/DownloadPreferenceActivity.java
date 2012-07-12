@@ -282,7 +282,7 @@ public class DownloadPreferenceActivity extends BasePreferenceActivity implement
 	protected void onResume() {
 		super.onResume();
 		try{
-			if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"DownloadPreferenceActivity: Resuming download preference activity.");
+			if (((Synodroid)getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"DownloadPreferenceActivity: Resuming download preference activity.");
 		}catch (Exception ex){/*DO NOTHING*/}
 		
 		// Check for fullscreen
@@ -360,7 +360,7 @@ public class DownloadPreferenceActivity extends BasePreferenceActivity implement
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == R.id.menu_wizard) {
 			try{
-				if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"DownloadPreferenceActivity: Menu find server selected.");
+				if (((Synodroid)getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"DownloadPreferenceActivity: Menu find server selected.");
 			}catch (Exception ex){/*DO NOTHING*/}
 			
 			WifiManager wifiMgr = (WifiManager) getSystemService(Context.WIFI_SERVICE);
@@ -379,7 +379,7 @@ public class DownloadPreferenceActivity extends BasePreferenceActivity implement
 		// Create a new server
 		}else if (item.getItemId() == R.id.menu_create) {
 			try{
-				if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"DownloadPreferenceActivity: Menu add server selected.");
+				if (((Synodroid)getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"DownloadPreferenceActivity: Menu add server selected.");
 			}catch (Exception ex){/*DO NOTHING*/}
 			
 			AddServerWizard wiz = new AddServerWizard(this, ((Synodroid)getApplication()).DEBUG);
@@ -387,7 +387,7 @@ public class DownloadPreferenceActivity extends BasePreferenceActivity implement
 		// Delete one or more servers
 		}else if (item.getItemId() == R.id.menu_delete) {
 			try{
-				if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"DownloadPreferenceActivity: Menu delete servers selected.");
+				if (((Synodroid)getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"DownloadPreferenceActivity: Menu delete servers selected.");
 			}catch (Exception ex){/*DO NOTHING*/}
 			
 			// Load servers list
@@ -804,12 +804,12 @@ public class DownloadPreferenceActivity extends BasePreferenceActivity implement
 	 */
 	public void onWizardFinished(HashMap<String, Object> metaDataP) {
 		try{
-			if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"DownloadPreferenceActivity: Wizard finished.");
+			if (((Synodroid)getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"DownloadPreferenceActivity: Wizard finished.");
 		}catch (Exception ex){/*DO NOTHING*/}
 		
 		if (metaDataP != null) {
 			try{
-				if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"DownloadPreferenceActivity: Adding server connection.");
+				if (((Synodroid)getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"DownloadPreferenceActivity: Adding server connection.");
 			}catch (Exception ex){/*DO NOTHING*/}
 			
 			maxServerId++;
@@ -836,7 +836,7 @@ public class DownloadPreferenceActivity extends BasePreferenceActivity implement
 		// Display a message for the end user
 		else {
 			try{
-				if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"DownloadPreferenceActivity: No server where found by the wizard.");
+				if (((Synodroid)getApplication()).DEBUG) Log.i(Synodroid.DS_TAG,"DownloadPreferenceActivity: No server where found by the wizard.");
 			}catch (Exception ex){/*DO NOTHING*/}
 			
 			AlertDialog.Builder builder = new AlertDialog.Builder(DownloadPreferenceActivity.this);

@@ -126,7 +126,7 @@ public class HomeActivity extends BaseActivity {
 				// Launch the Preference activity
 				public void onClick(DialogInterface dialogP, int whichP) {
 					try{
-						if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG, "HomeActivity: Adding url:" + edt.getText().toString());
+						if (((Synodroid)getApplication()).DEBUG) Log.i(Synodroid.DS_TAG, "HomeActivity: Adding url:" + edt.getText().toString());
 					}catch (Exception ex){/*DO NOTHING*/}
 					Synodroid app = (Synodroid) getApplication();
 					FragmentManager fm = getSupportFragmentManager();
@@ -137,7 +137,7 @@ public class HomeActivity extends BaseActivity {
 					catch (Exception e){
 						//Cannot clear all when download fragment not accessible.
 						try{
-							if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG, "HomeActivity: App tried to call add download when download fragment hidden.");
+							if (((Synodroid)getApplication()).DEBUG) Log.e(Synodroid.DS_TAG, "HomeActivity: App tried to call add download when download fragment hidden.");
 						}catch (Exception ex){/*DO NOTHING*/}
 					}
 					removeDialog(ADD_DOWNLOAD);
@@ -202,7 +202,7 @@ public class HomeActivity extends BaseActivity {
 		}
         
 		try{
-			if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"HomeActivity: Resuming home activity.");
+			if (((Synodroid)getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"HomeActivity: Resuming home activity.");
 		}catch (Exception ex){/*DO NOTHING*/}
 	}
 	
@@ -260,7 +260,7 @@ public class HomeActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.menu_refresh) {
         	try{
-        		if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"HomeActivity: Menu refresh selected.");
+        		if (((Synodroid)getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"HomeActivity: Menu refresh selected.");
         	}catch (Exception ex){/*DO NOTHING*/}
         	
             triggerRefresh();
@@ -268,28 +268,28 @@ public class HomeActivity extends BaseActivity {
         }
         else if (item.getItemId() == R.id.menu_search){
         	try{
-        		if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"HomeActivity: Menu search selected.");
+        		if (((Synodroid)getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"HomeActivity: Menu search selected.");
         	}catch (Exception ex){/*DO NOTHING*/}
         	
             startSearch(null, false, null, false);
         }
         /*else if (item.getItemId() == R.id.menu_add){
         	try{
-        		if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"HomeActivity: Menu add selected.");
+        		if (((Synodroid)getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"HomeActivity: Menu add selected.");
         	}catch (Exception ex){}
         	
             showDialog(ADD_DOWNLOAD);
         }*/
 		else if (item.getItemId() == R.id.menu_preferences){
 			try{
-				if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"HomeActivity: Menu preference selected.");
+				if (((Synodroid)getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"HomeActivity: Menu preference selected.");
 			}catch (Exception ex){/*DO NOTHING*/}
         	
             showPreferenceActivity();
 		}
 		else if (item.getItemId() == R.id.menu_share){
 			try{
-				if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"HomeActivity: Menu get share list selected.");
+				if (((Synodroid)getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"HomeActivity: Menu get share list selected.");
 			}catch (Exception ex){/*DO NOTHING*/}
         	
             Synodroid app = (Synodroid) getApplication();
@@ -311,7 +311,7 @@ public class HomeActivity extends BaseActivity {
 		}
 		else if (item.getItemId() == R.id.menu_clear_all){
 			try{
-				if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"HomeActivity: Menu clear all completed selected.");
+				if (((Synodroid)getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"HomeActivity: Menu clear all completed selected.");
 			}catch (Exception ex){/*DO NOTHING*/}
         	
             Synodroid app = (Synodroid) getApplication();
@@ -328,7 +328,7 @@ public class HomeActivity extends BaseActivity {
 		}
 		else if (item.getItemId() == R.id.menu_pause_all){
 			try{
-				if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"HomeActivity: Menu pause all selected.");
+				if (((Synodroid)getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"HomeActivity: Menu pause all selected.");
 			}catch (Exception ex){/*DO NOTHING*/}
         	
             Synodroid app = (Synodroid) getApplication();
@@ -346,7 +346,7 @@ public class HomeActivity extends BaseActivity {
 		}
 		else if (item.getItemId() == R.id.menu_revert){
 			try{
-				if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"HomeActivity: Menu resume all selected.");
+				if (((Synodroid)getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"HomeActivity: Menu resume all selected.");
 			}catch (Exception ex){/*DO NOTHING*/}
         	
             Synodroid app = (Synodroid) getApplication();
@@ -364,7 +364,7 @@ public class HomeActivity extends BaseActivity {
 		}
 		else if (item.getItemId() == R.id.menu_about){
 			try{
-				if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"HomeActivity: Menu about selected.");
+				if (((Synodroid)getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"HomeActivity: Menu about selected.");
 			}catch (Exception ex){/*DO NOTHING*/}
         	
             // Starting new intent
@@ -377,7 +377,7 @@ public class HomeActivity extends BaseActivity {
 
     private void triggerRefresh() {
     	try{
-    		if (((Synodroid)getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"HomeActivity: Forcing task list refresh.");
+    		if (((Synodroid)getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"HomeActivity: Forcing task list refresh.");
     	}catch (Exception ex){/*DO NOTHING*/}
     	
     	((Synodroid) getApplication()).forceRefresh();

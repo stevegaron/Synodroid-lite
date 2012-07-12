@@ -70,7 +70,7 @@ public class SearchFragment extends SynodroidFragment {
             Bundle savedInstanceState) {
 		final Activity a = getActivity();
 		try{
-			if (((Synodroid)a.getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"SearchFragment: Creating search fragment.");
+			if (((Synodroid)a.getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"SearchFragment: Creating search fragment.");
 		}catch (Exception ex){/*DO NOTHING*/}
 
         if (savedInstanceState != null)
@@ -292,7 +292,7 @@ public class SearchFragment extends SynodroidFragment {
 		
 		if (Intent.ACTION_SEARCH.equals(action)) {
 			try{
-				if (((Synodroid)a.getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"SearchFragment: New search intent received.");
+				if (((Synodroid)a.getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"SearchFragment: New search intent received.");
 			}
 			catch (Exception ex){/*DO NOTHING*/}
 			
@@ -312,14 +312,14 @@ public class SearchFragment extends SynodroidFragment {
 				}
 				else {
 					try{
-						if (((Synodroid)a.getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"SearchFragment: No providers available to handle intent.");
+						if (((Synodroid)a.getApplication()).DEBUG) Log.w(Synodroid.DS_TAG,"SearchFragment: No providers available to handle intent.");
 					}
 					catch (Exception ex){/*DO NOTHING*/}
 				}
 			}
 			else{
 				try{
-					if (((Synodroid)a.getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"SearchFragment: This was an old intent. Skipping it...");
+					if (((Synodroid)a.getApplication()).DEBUG) Log.i(Synodroid.DS_TAG,"SearchFragment: This was an old intent. Skipping it...");
 				}
 				catch (Exception ex){/*DO NOTHING*/}
 			}
@@ -421,7 +421,7 @@ public class SearchFragment extends SynodroidFragment {
 		else if (msg.what == ResponseHandler.MSG_SE_LIST_RETRIEVED) {
 			final Activity a = getActivity();
 			try{
-				if (((Synodroid)a.getApplication()).DEBUG) Log.d(Synodroid.DS_TAG,"DownloadFragment: Received search engine listing message.");
+				if (((Synodroid)a.getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"DownloadFragment: Received search engine listing message.");
 			}catch (Exception ex){/*DO NOTHING*/}
 			
 			@SuppressWarnings("unchecked")
