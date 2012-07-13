@@ -453,4 +453,10 @@
 <string name="tab_search">Búsqueda</string>
 <string name="tab_pro">Pro</string>
 
+<string name="title_cat_debug">Depuración</string>
+<string name="send_debug_logs">Ver/Enviar registros de depuración</string>
+<string name="title_debug_logs">Synodroid Preview Registros</string>
+<string name="btn_send">Enviar</string>
+<string name="no_logs">No hay registros generados para su aplicación en estos momentos. Habilitar la depuración y realizar acciones con la aplicación hasta que se pueda reproducir el problema. A continuación, puede enviar los registros...</string>
+
 </resources>
