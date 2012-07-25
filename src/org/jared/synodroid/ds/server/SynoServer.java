@@ -39,8 +39,6 @@ import org.jared.synodroid.ds.action.SynoAction;
 import org.jared.synodroid.ds.data.DSMVersion;
 import org.jared.synodroid.ds.data.SynoProtocol;
 
-import org.jared.synodroid.ds.server.SynoServer;
-
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.util.Log;
