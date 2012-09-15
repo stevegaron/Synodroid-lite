@@ -17,7 +17,6 @@
 package org.jared.synodroid.ds.utils;
 
 import org.jared.synodroid.ds.R;
-import org.jared.synodroid.ds.ui.DownloadFragment;
 import org.jared.synodroid.ds.ui.HomeActivity;
 
 import android.app.Activity;
@@ -59,9 +58,8 @@ public class ActivityHelper {
         mActivity = activity;
     }
 
-    public void invalidateOptionMenu(){
-    	
-    }
+    public void triggerDDNavigationMode(){}
+    public void invalidateOptionMenu(){}
     
     public void onPostCreate(Bundle savedInstanceState) {
         // Create the action bar
@@ -79,7 +77,13 @@ public class ActivityHelper {
     	
         if (actionMode != null){
 	        SimpleMenu actionMenu = new SimpleMenu(mActivity);
-	        mActivity.getMenuInflater().inflate(R.menu.action_mode_menu, actionMenu);
+	        if (mActivity instanceof HomeActivity){
+	        	mActivity.getMenuInflater().inflate(R.menu.action_mode_menu, actionMenu);
+	        }
+	        else {
+	        	mActivity.getMenuInflater().inflate(R.menu.action_mode_file_menu, actionMenu);
+	        }
+	        
 	        for (int i = 0; i < actionMenu.size(); i++) {
 	            MenuItem item = actionMenu.getItem(i);
 	            addActionButtonCompatFromMenuItem(actionMode, item, null);
@@ -92,11 +96,6 @@ public class ActivityHelper {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_search:
-                goSearch();
-                return true;
-        }
         return false;
     }
 
@@ -134,13 +133,6 @@ public class ActivityHelper {
         //if (!UIUtils.isHoneycomb()) {
         //    mActivity.overridePendingTransition(R.anim.home_enter, R.anim.home_exit);
         //}
-    }
-
-    /**
-     * Invoke "search" action, triggering a default search.
-     */
-    public void goSearch() {
-        mActivity.startSearch(null, false, Bundle.EMPTY, false);
     }
 
     public void setTitleOnClickListener(OnClickListener ocl){
@@ -359,7 +351,7 @@ public class ActivityHelper {
         }
     }
     
-    public void startActionMode(DownloadFragment fragment, OnClickListener cancelClickListener,
+    public void startActionMode(OnClickListener cancelClickListener,
     		OnClickListener clearClickListener, OnClickListener resumeClickListener,
     		OnClickListener pauseClickListener){
     	ViewGroup actionBar = (ViewGroup) mActivity.findViewById(R.id.actionbar_compat);
@@ -390,5 +382,31 @@ public class ActivityHelper {
     		TextView titleText = (TextView) actionMode.findViewById(R.id.actionmode_compat_text);
     		titleText.setText(title);
     	}
+    }
+    
+    public void startActionMode(OnClickListener cancelClickListener,
+    		OnClickListener highClickListener, OnClickListener normalClickListener,
+    		OnClickListener lowClickListener, OnClickListener skipClickListener){
+    	ViewGroup actionBar = (ViewGroup) mActivity.findViewById(R.id.actionbar_compat);
+    	ViewGroup actionMode = (ViewGroup) mActivity.findViewById(R.id.actionmode_compat);
+        
+        if (actionBar != null){
+        	actionBar.setVisibility(View.GONE);
+        }
+
+        if (actionMode != null){
+        	actionMode.setVisibility(View.VISIBLE);
+        	ImageButton logo = (ImageButton) actionMode.findViewById(R.id.actionmode_compat_logo);
+        	logo.setOnClickListener(cancelClickListener);
+        	
+        	//ImageButton high = (ImageButton) actionMode.findViewById(R.id.menu_high);
+        	ImageButton normal = (ImageButton) actionMode.findViewById(R.id.menu_normal);
+        	//ImageButton low = (ImageButton) actionMode.findViewById(R.id.menu_low);
+        	ImageButton skip = (ImageButton) actionMode.findViewById(R.id.menu_skip);
+        	//high.setOnClickListener(highClickListener);
+        	normal.setOnClickListener(normalClickListener);
+        	//low.setOnClickListener(lowClickListener);
+        	skip.setOnClickListener(skipClickListener);
+        }
     }
 }

@@ -36,12 +36,14 @@ import android.support.v4.app.Fragment;
  * 
  * @author Eric Taix (eric.taix at gmail.com)
  */
-public class AddTaskAction implements SynoAction {
+public class AddPwTaskAction implements SynoAction {
 
 	private Uri uri;
 	private Task task;
 	private boolean use_safe;
 	private boolean toast = true;
+	private String uname;
+	private String pass;
 	
 	/**
 	 * Constructor to upload a file defined by an Uri
@@ -49,7 +51,7 @@ public class AddTaskAction implements SynoAction {
 	 * @param uriP
 	 * @param outside_url
 	 */
-	public AddTaskAction(Uri uriP, boolean outside_url, boolean use_safeP) {
+	public AddPwTaskAction(Uri uriP, String username, String password, boolean outside_url, boolean use_safeP) {
 		uri = uriP;
 		task = new Task();
 		task.fileName = uri.getLastPathSegment();
@@ -58,12 +60,14 @@ public class AddTaskAction implements SynoAction {
 		}
 		task.outside_url = outside_url;
 		use_safe = use_safeP;
+		uname = username;
+		pass = password;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.jared.synodroid.ds.action.TaskAction#execute(org.jared.synodroid.ds .DownloadActivity, org.jared.synodroid.ds.common.SynoServer)
+	 * @see org.jared.synodroid.ds.ds.action.TaskAction#execute(org.jared.synodroid.ds.ds .DownloadActivity, org.jared.synodroid.ds.common.SynoServer)
 	 */
 	public void execute(ResponseHandler handlerP, SynoServer serverP) throws Exception {
 		if (use_safe && serverP.getDsmVersion().smallerThen(DSMVersion.VERSION3_1)){
@@ -77,9 +81,8 @@ public class AddTaskAction implements SynoAction {
 		else{
 			if (task.outside_url) {
 				// Start task using url instead of reading file
-				serverP.getDSMHandlerFactory().getDSHandler().uploadUrl(uri, null, null);
+				serverP.getDSMHandlerFactory().getDSHandler().uploadUrl(uri, uname, pass);
 			} else {
-				//serverP.getDSMHandlerFactory().getDSHandler().upload((Fragment) handlerP, uri);
 				Activity a = ((Fragment)handlerP).getActivity();
 				Intent msgIntent = new Intent(a, UploadIntentService.class);
 				msgIntent.putExtra(UploadIntentService.URL, uri.toString());
@@ -107,7 +110,7 @@ public class AddTaskAction implements SynoAction {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.jared.synodroid.ds.action.TaskAction#getName()
+	 * @see org.jared.synodroid.ds.ds.action.TaskAction#getName()
 	 */
 	public String getName() {
 		return "Adding file " + uri;
@@ -116,7 +119,7 @@ public class AddTaskAction implements SynoAction {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.jared.synodroid.ds.action.TaskAction#getTask()
+	 * @see org.jared.synodroid.ds.ds.action.TaskAction#getTask()
 	 */
 	public Task getTask() {
 		return task;
@@ -125,7 +128,7 @@ public class AddTaskAction implements SynoAction {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.jared.synodroid.ds.action.TaskAction#getToastId()
+	 * @see org.jared.synodroid.ds.ds.action.TaskAction#getToastId()
 	 */
 	public int getToastId() {
 		return R.string.action_adding;
@@ -134,7 +137,7 @@ public class AddTaskAction implements SynoAction {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.jared.synodroid.ds.action.TaskAction#isToastable()
+	 * @see org.jared.synodroid.ds.ds.action.TaskAction#isToastable()
 	 */
 	public boolean isToastable() {
 		return toast;

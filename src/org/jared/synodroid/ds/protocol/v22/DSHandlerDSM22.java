@@ -454,7 +454,7 @@ class DSHandlerDSM22 implements DSHandler {
 		}
 	}
 
-	public void uploadUrl(Uri uriP) throws Exception {
+	public void uploadUrl(Uri uriP, String uname, String pass) throws Exception {
 		// If we are logged on
 		if (server.isConnected()) {
 			if (uriP.toString() != null) {
@@ -560,7 +560,7 @@ class DSHandlerDSM22 implements DSHandler {
 	public void setTaskProperty(final Task taskP, int ul_rate, int dl_rate, int priority, int max_peers, String destination, int seeding_ratio, int seeding_interval) throws Exception {
 	}
 
-	public void setFilePriority(final Task taskP, List<TaskFile> filesP) throws Exception {
+	public void setFilePriority(final Task taskP, List<TaskFile> filesP, String priority) throws Exception {
 	}
 
 	/*

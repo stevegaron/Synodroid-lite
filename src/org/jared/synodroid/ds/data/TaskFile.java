@@ -31,6 +31,10 @@ public class TaskFile {
 	public boolean download;
 	// Task numeric ID
 	public int id = 0;
+	// Task priority
+	public String priority = "0";
+	// Is task selected
+	public boolean selected = false;
 
 	/*
 	 * (non-Javadoc)

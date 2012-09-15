@@ -35,10 +35,12 @@ public class UpdateFilesAction implements SynoAction {
 	// The torrent to resume
 	private Task task;
 	private List<TaskFile> files;
+	private String priority;
 
-	public UpdateFilesAction(Task taskP, List<TaskFile> filesP) {
+	public UpdateFilesAction(Task taskP, List<TaskFile> filesP, String priorityP) {
 		task = taskP;
 		files = filesP;
+		priority = priorityP;
 	}
 
 	/*
@@ -47,7 +49,7 @@ public class UpdateFilesAction implements SynoAction {
 	 * @see org.jared.synodroid.ds.common.SynoAction#execute(org.jared.synodroid.ds.TorrentListActivity, org.jared.synodroid.ds.common.SynoServer)
 	 */
 	public void execute(ResponseHandler handlerP, SynoServer serverP) throws Exception {
-		serverP.getDSMHandlerFactory().getDSHandler().setFilePriority(task, files);
+		serverP.getDSMHandlerFactory().getDSHandler().setFilePriority(task, files, priority);
 	}
 
 	/*

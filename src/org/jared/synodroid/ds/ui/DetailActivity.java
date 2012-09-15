@@ -17,8 +17,6 @@ import org.jared.synodroid.ds.action.GetTaskPropertiesAction;
 import org.jared.synodroid.ds.action.PauseTaskAction;
 import org.jared.synodroid.ds.action.ResumeTaskAction;
 import org.jared.synodroid.ds.action.SetShared;
-import org.jared.synodroid.ds.action.UpdateFilesAction;
-import org.jared.synodroid.ds.action.UpdateTaskAction;
 import org.jared.synodroid.ds.action.UpdateTaskPropertiesAction;
 import org.jared.synodroid.ds.adapter.Detail;
 import org.jared.synodroid.ds.adapter.Detail2Progress;
@@ -129,7 +127,6 @@ public class DetailActivity extends BaseActivity{
 	public void onPause() {
 		super.onPause();
 		// Try to update the details
-		updateTask(false);
 		Synodroid app = (Synodroid) getApplication();
 		app.pauseServer();
 	}
@@ -818,7 +815,12 @@ public class DetailActivity extends BaseActivity{
 				if (app.DEBUG) Log.v(Synodroid.DS_TAG,"DetailActivity: Menu refresh selected.");
 			}catch (Exception ex){/*DO NOTHING*/}
 			
-			((Synodroid) getApplication()).forceRefresh();
+			DetailFiles file = (DetailFiles)mAdapter.getItem(FILE_ITEM);
+			
+			if (task.isTorrent){
+				app.forceRefresh();
+				app.executeAsynchronousAction(file, new GetFilesAction(task), false);
+			}
             return true;
         }
 		else if (item.getItemId() == MENU_PAUSE){
@@ -863,7 +865,7 @@ public class DetailActivity extends BaseActivity{
 		}
 		else if (item.getItemId() == MENU_DESTINATION){
 			try{
-				if (app.DEBUG) Log.d(Synodroid.DS_TAG,"DetailActivity: Menu destination selected.");
+				if (app.DEBUG) Log.v(Synodroid.DS_TAG,"DetailActivity: Menu destination selected.");
 			}catch (Exception ex){/*DO NOTHING*/}
 			
 			/*if (app.getServer().getDsmVersion().greaterThen(DSMVersion.VERSION3_0)){
@@ -898,8 +900,6 @@ public class DetailActivity extends BaseActivity{
 	public void updateTask(boolean forceRefreshP) {
 		Synodroid app = (Synodroid) getApplication();
 		DetailMain main = (DetailMain)mAdapter.getItem(MAIN_ITEM);
-		DetailFiles files = (DetailFiles)mAdapter.getItem(FILE_ITEM);
-		List<TaskFile> modifiedTaskFiles = null;
 		SynoServer server = null;
 		try {
 			server = app.getServer();
@@ -908,40 +908,12 @@ public class DetailActivity extends BaseActivity{
 
 		if (server != null) {
 			if (server.getDsmVersion().greaterThen(DSMVersion.VERSION3_0)) {
-				if (files != null && files.fileAdapter != null){
-					modifiedTaskFiles = files.fileAdapter.getModifiedTaskList();
-				}
-				else{
-					modifiedTaskFiles = new ArrayList<TaskFile>();
-				}
-				
-				if (modifiedTaskFiles != null && modifiedTaskFiles.size() > 0) {
-					UpdateFilesAction update = new UpdateFilesAction(task, modifiedTaskFiles);
-					app.getServer().executeAsynchronousAction(main, update, forceRefreshP);
-					seedingChanged = false;
-				} else if (seedingChanged) {
+				if (seedingChanged) {
 					UpdateTaskPropertiesAction update = new UpdateTaskPropertiesAction(task, ul_rate, dl_rate, priority, max_peers, destination, seedingRatio, seedingTime);
 					app.getServer().executeAsynchronousAction(main, update, forceRefreshP);
 					seedingChanged = false;
 				}
-
-			} else {
-				if (files != null){
-					try{
-						modifiedTaskFiles = files.fileAdapter.getModifiedTaskList();
-					}catch (Exception e) {}
-				}
-				else{
-					modifiedTaskFiles = new ArrayList<TaskFile>();
-				}
-				
-				if ((modifiedTaskFiles != null && modifiedTaskFiles.size() > 0) || (seedingChanged)) {
-
-					UpdateTaskAction update = new UpdateTaskAction(task, modifiedTaskFiles, seedingRatio, seedingTime);
-					app.getServer().executeAsynchronousAction(main, update, forceRefreshP);
-					seedingChanged = false;
-				}
-			}
+			} 
 		}
 
 	}
@@ -969,9 +941,6 @@ public class DetailActivity extends BaseActivity{
 			try{
 				if (debug) Log.v(Synodroid.DS_TAG, "DetailActivity: View pager attemps to destroy pager number: "+position);
 			}catch (Exception ex){/*DO NOTHING*/}
-			if (position == 2){
-				mCurActivity.updateTask(false);
-			}
 		}
 		
 		@Override

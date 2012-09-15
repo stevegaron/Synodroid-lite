@@ -74,9 +74,6 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
  * @author eric.taix at gmail.com
  */
 public class DownloadFragment extends SynodroidFragment implements OnCheckedChangeListener{
-	//private static final String PREFERENCE_GENERAL = "general_cat";
-	//private static final String PREFERENCE_AUTO_DSM = "general_cat.auto_detect_DSM";
-	
 	// The connection dialog ID
 	private static final int CONNECTION_DIALOG_ID = 1;
 	// No server configured
@@ -85,6 +82,7 @@ public class DownloadFragment extends SynodroidFragment implements OnCheckedChan
 	private static final String PREFERENCE_HIDE_BANNER = "general_cat.banner";
 	private static final String PREFERENCE_GENERAL = "general_cat";
 	private static final String PREFERENCE_SHOW_GET_STARTED = "general_cat.show_get_started";
+	//private static final String PREFERENCE_AUTO_DSM = "general_cat.auto_detect_DSM";
 	//private static final String PREFERENCE_DEF_SRV = "servers_cat.default_srv";
 	//private static final String PREFERENCE_SERVER = "servers_cat";
 	
@@ -184,7 +182,7 @@ public class DownloadFragment extends SynodroidFragment implements OnCheckedChan
 		// An error message
 		else if (msg.what == ResponseHandler.MSG_ERROR) {
 			try{
-				if (((Synodroid)a.getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"DownloadFragment: Received error message.");
+				if (((Synodroid)a.getApplication()).DEBUG) Log.w(Synodroid.DS_TAG,"DownloadFragment: Received error message.");
 			}catch (Exception ex){/*DO NOTHING*/}
 			
 			// Change the title
@@ -464,7 +462,7 @@ public class DownloadFragment extends SynodroidFragment implements OnCheckedChan
 					uri = Uri.parse(uri.toString().replace("https://magnet/", "magnet:"));
 				}
 				
-				if (!uri.toString().startsWith("file")) {
+				if (!uri.toString().startsWith("file:")) {
 					use_safe = true;
 					out_url = true;
 				}	

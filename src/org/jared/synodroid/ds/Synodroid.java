@@ -24,6 +24,7 @@ import org.jared.synodroid.ds.action.DeleteTaskAction;
 import org.jared.synodroid.ds.action.GetAllAndOneDetailTaskAction;
 import org.jared.synodroid.ds.action.SynoAction;
 import org.jared.synodroid.ds.data.TaskStatus;
+import org.jared.synodroid.ds.ui.DetailFiles;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -281,6 +282,26 @@ public class Synodroid extends Application {
 			actionQueue.add(actionP);
 		}
 	}
+	
+	/**
+	 * Execute an action and connect to the server or display the connection dialog if needed
+	 * 
+	 * @param activityP
+	 * @param actionP
+	 * @param forceRefreshP
+	 */
+	public void executeAction(final DetailFiles fragmentP, final SynoAction actionP, final boolean forceRefreshP) {
+		if (currentServer != null) {
+			// First verify if it is a DeleteTaskAction and if the task is not finished
+			currentServer.executeAsynchronousAction(fragmentP, actionP, forceRefreshP);
+		}
+		// If an action have to be executed but with no current connection
+		else {
+			ArrayList<SynoAction> actionQueue = new ArrayList<SynoAction>();
+			actionQueue.add(actionP);
+		}
+	}
+
 	/**
 	 * Execute an action and connect to the server or display the connection dialog if needed
 	 * 

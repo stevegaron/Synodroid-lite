@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.jared.synodroid.ds.R;
 import org.jared.synodroid.ds.Synodroid;
+import org.jared.synodroid.ds.action.AddPwTaskAction;
 import org.jared.synodroid.ds.action.AddTaskAction;
 import org.jared.synodroid.ds.action.ClearAllTaskAction;
 import org.jared.synodroid.ds.action.EnumShareAction;
@@ -12,6 +13,7 @@ import org.jared.synodroid.ds.action.ResumeAllAction;
 import org.jared.synodroid.ds.action.StopAllAction;
 import org.jared.synodroid.ds.adapter.TaskAdapter;
 //import org.jared.synodroid.ds.data.DSMVersion;
+import org.jared.synodroid.ds.data.DSMVersion;
 import org.jared.synodroid.ds.data.Task;
 import org.jared.synodroid.ds.utils.ActivityHelper;
 import org.jared.synodroid.ds.ui.DownloadPreferenceActivity;
@@ -35,6 +37,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 /**
  * Front-door {@link Activity} that displays high-level features the schedule application offers to
@@ -120,6 +125,35 @@ public class HomeActivity extends BaseActivity {
 			View v = inflater.inflate(R.layout.add_download, null);
 			final EditText edt = (EditText) v.findViewById(R.id.add_url);
 			edt.setText("");
+			final EditText user = (EditText) v.findViewById(R.id.username);
+			user.setText("");
+			final EditText pass = (EditText) v.findViewById(R.id.pass);
+			pass.setText("");
+			final ImageView exp_col = (ImageView) v.findViewById(R.id.exp_col);
+			final LinearLayout creds = (LinearLayout) v.findViewById(R.id.credentials);
+			final RelativeLayout adv = (RelativeLayout) v.findViewById(R.id.adv_settings);
+			adv.setOnClickListener(new android.view.View.OnClickListener(){
+				@Override
+				public void onClick(View v) {
+					if (creds.getVisibility() == View.GONE){
+						exp_col.setImageResource(R.drawable.ic_colapse);
+						creds.setVisibility(View.VISIBLE);
+					}
+					else{
+						creds.setVisibility(View.GONE);
+						exp_col.setImageResource(R.drawable.ic_expand);
+					}
+				}
+				
+			});
+			
+			try{
+				if (((Synodroid)getApplication()).getServer().getDsmVersion().smallerThen(DSMVersion.VERSION3_1)){
+					adv.setVisibility(View.GONE);
+				}
+			}
+			catch (NullPointerException e){}
+			
 			add_download.setView(v);
 			add_download.setCancelable(true);
 			add_download.setPositiveButton(getString(R.string.menu_add), new OnClickListener() {
@@ -132,7 +166,24 @@ public class HomeActivity extends BaseActivity {
 					FragmentManager fm = getSupportFragmentManager();
 			        try{
 			        	DownloadFragment fragment_download = (DownloadFragment) fm.findFragmentById(R.id.fragment_download);
-			        	app.executeAsynchronousAction(fragment_download, new AddTaskAction(Uri.parse(edt.getText().toString()), true, false), true);
+			        	Uri uri = Uri.parse(edt.getText().toString());
+			        	
+			        	if (!uri.toString().startsWith("http://") && !uri.toString().startsWith("https://") && !uri.toString().startsWith("ftp://") && !uri.toString().startsWith("file://") && !uri.toString().startsWith("magnet:")){
+			        		uri = Uri.parse("http://"+uri.toString());
+			        	}
+			        	if (uri.toString().startsWith("http://magnet/")){
+			        		uri = Uri.parse(uri.toString().replace("http://magnet/", "magnet:"));
+			        	}
+			        	else if (uri.toString().startsWith("https://magnet/")){
+			        		uri = Uri.parse(uri.toString().replace("https://magnet/", "magnet:"));
+			        	}
+			        	
+			        	if (!user.getText().toString().equals("") || !pass.getText().toString().equals("")){
+			        		app.executeAsynchronousAction(fragment_download, new AddPwTaskAction(uri, user.getText().toString(), pass.getText().toString(), true, false), true);
+			        	}
+			        	else{
+			        		app.executeAsynchronousAction(fragment_download, new AddTaskAction(uri, true, false), true);
+			        	}
 			        }
 					catch (Exception e){
 						//Cannot clear all when download fragment not accessible.

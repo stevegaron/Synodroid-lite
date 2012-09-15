@@ -25,6 +25,7 @@ import org.jared.synodroid.ds.preference.ListPreferenceWithValue;
 import org.jared.synodroid.ds.preference.PreferenceFacade;
 import org.jared.synodroid.ds.preference.PreferenceProcessor;
 import org.jared.synodroid.ds.preference.PreferenceWithValue;
+import org.jared.synodroid.ds.utils.SearchResultsOpenHelper;
 import org.jared.synodroid.ds.utils.SynodroidSearchSuggestion;
 import org.jared.synodroid.ds.utils.UIUtils;
 import org.jared.synodroid.ds.wizard.AddServerWizard;
@@ -41,6 +42,7 @@ import android.content.DialogInterface.OnDismissListener;
 import android.content.DialogInterface.OnMultiChoiceClickListener;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
@@ -273,8 +275,13 @@ public class DownloadPreferenceActivity extends BasePreferenceActivity implement
     }
 	
 	private void clearSearchHistory() {
-		SearchRecentSuggestions suggestions = new SearchRecentSuggestions(this, SynodroidSearchSuggestion.AUTHORITY, SynodroidSearchSuggestion.MODE);
+		SearchRecentSuggestions suggestions = new SearchRecentSuggestions(DownloadPreferenceActivity.this, SynodroidSearchSuggestion.AUTHORITY, SynodroidSearchSuggestion.MODE);
 		suggestions.clearHistory();
+
+		SearchResultsOpenHelper db_helper = new SearchResultsOpenHelper(this);
+		SQLiteDatabase cache = db_helper.getWritableDatabase();
+		cache.execSQL("DELETE FROM "+ SearchResultsOpenHelper.TABLE_CACHE);
+		cache.close();
 	}
 
 	private void reloadCurrentServers() {
