@@ -163,7 +163,7 @@ public class DebugActivity extends BaseActivity{
 			try {
 				final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
 				emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] { "synodroid@gmail.com" });
-				emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Synodroid Professional - Debug log");
+				emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Synodroid Lite - Debug log");
 				emailIntent.setType("plain/text");
 				emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + file.getAbsolutePath()));
 				startActivity(emailIntent);

@@ -65,7 +65,7 @@ public class AboutFragment extends Fragment{
 					final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
 					emailIntent.setType("plain/text");
 					emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] { "synodroid@gmail.com" });
-					emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Synodroid Professional - help");
+					emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Synodroid Lite - help");
 					startActivity(emailIntent);
 				} catch (Exception e) {
 					AlertDialog.Builder builder = new AlertDialog.Builder(aboutActivity);
