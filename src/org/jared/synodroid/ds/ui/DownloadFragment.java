@@ -40,6 +40,7 @@ import org.jared.synodroid.ds.utils.ActionModeHelper;
 import org.jared.synodroid.ds.utils.EulaHelper;
 import org.jared.synodroid.ds.utils.IntentHelper;
 import org.jared.synodroid.ds.utils.UIUtils;
+import org.jared.synodroid.ds.utils.Utils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -463,6 +464,10 @@ public class DownloadFragment extends SynodroidFragment implements OnCheckedChan
 				}
 				else if (uri.toString().startsWith("https://magnet/")){
 					uri = Uri.parse(uri.toString().replace("https://magnet/", "magnet:"));
+				}
+				
+				if (uri.toString().startsWith("content:")){
+					uri = Utils.moveToStorage(getActivity(), uri);
 				}
 				
 				if (!uri.toString().startsWith("file:")) {
