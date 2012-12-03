@@ -7,6 +7,7 @@ import javax.jmdns.ServiceInfo;
 import org.jared.synodroid.ds.Synodroid;
 import org.jared.synodroid.ds.data.DSMVersion;
 import org.jared.synodroid.ds.ui.DownloadPreferenceActivity;
+import org.jared.synodroid.ds.utils.Utils;
 import org.jared.synodroid.ds.R;
 
 import android.app.AlertDialog;
@@ -171,7 +172,7 @@ public class ServerWizard {
 		context = ctxP;
 		inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		cancelSeq = context.getText(R.string.button_cancel);
-		metaData.put(META_WIFI, wifiSSIDP);
+		metaData.put(META_WIFI, Utils.validateSSID(wifiSSIDP));
 		DEBUG = debug;
 	}
 

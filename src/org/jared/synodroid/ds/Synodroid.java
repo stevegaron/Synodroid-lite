@@ -25,6 +25,7 @@ import org.jared.synodroid.ds.action.GetAllAndOneDetailTaskAction;
 import org.jared.synodroid.ds.action.SynoAction;
 import org.jared.synodroid.ds.data.TaskStatus;
 import org.jared.synodroid.ds.ui.DetailFiles;
+import org.jared.synodroid.ds.utils.Utils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -136,7 +137,7 @@ public class Synodroid extends Application {
 		}
 		// If we are connected to a WIFI network, verify if SSID match
 		boolean pub = true;
-		String cur_ssid = currentWifi.getSSID();
+		String cur_ssid = Utils.validateSSID(currentWifi.getSSID());
 		if (wifiConnected && cur_ssid != null) {
 			if (DEBUG) Log.v(Synodroid.DS_TAG, "Synodroid: Wifi current SSID is: '" + cur_ssid+"'");
 			SynoServerConnection sc = currentServer.getLocalConnection();
@@ -145,6 +146,7 @@ public class Synodroid extends Application {
 				if (ssids != null) {
 					if (DEBUG) Log.v(Synodroid.DS_TAG, "Synodroid: Local connection has an SSID list! Checking to find the right SSID...");
 					for (String ssid : ssids) {
+						ssid = Utils.validateSSID(ssid);
 						if (DEBUG) Log.v(Synodroid.DS_TAG, "Synodroid: Comparing '"+ssid+"' with '" + cur_ssid+"' ...");
 						if (cur_ssid.equals(ssid)) {
 							pub = false;
