@@ -167,6 +167,15 @@ public class FileDetailAdapter extends BaseAdapter implements AdapterView.OnItem
 		// The filename
 		TextView fileText = (TextView) viewP.findViewById(R.id.id_file_name);
 		fileText.setText(fileP.name);
+		
+		TextView fileExt = (TextView) viewP.findViewById(R.id.id_file_ext);
+		//int ext_index = fileP.name.lastIndexOf('.');
+		//if (ext_index != -1){
+		//	fileExt.setText(fileP.name.substring(ext_index));
+		//}
+		//else{
+		fileExt.setText("");
+		//}
 
 		// The file size
 		TextView fileSize = (TextView) viewP.findViewById(R.id.id_file_size);
