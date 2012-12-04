@@ -7,6 +7,7 @@ import org.jared.synodroid.ds.action.GetSearchEngineAction;
 import org.jared.synodroid.ds.utils.ActivityHelper;
 import org.jared.synodroid.ds.utils.EulaHelper;
 import org.jared.synodroid.ds.utils.SearchResultsOpenHelper;
+import org.jared.synodroid.ds.utils.UIUtils;
 
 import org.jared.synodroid.ds.ui.SearchFragment;
 
@@ -33,17 +34,31 @@ public class SearchActivity extends BaseActivity{
 	private static final String TORRENT_SEARCH_URL_DL = "http://transdroid.org/latest-search";
 	private static final String PREFERENCE_SEARCH_SOURCE = "general_cat.search_source";
 	private static final String PREFERENCE_SEARCH_ORDER = "general_cat.search_order";
+	private static boolean searchAtStart = false;
 	
 	@Override
 	public boolean onSearchRequested() {
-		getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		return super.onSearchRequested();
+		if (!UIUtils.isHoneycomb()){
+			getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+			return super.onSearchRequested();
+		}
+		else{
+			if (!getActivityHelper().startSearch()){
+				searchAtStart = true;
+			}
+			return true;
+		}
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
 	}
 	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.refresh_menu_items, menu);
-		getMenuInflater().inflate(R.menu.default_menu_items, menu);
+		getMenuInflater().inflate(R.menu.search_menu, menu);
 		/*try{
 			if (((Synodroid)getApplication()).getServer().getDsmVersion().greaterThen(DSMVersion.VERSION3_0)){
 				getMenuInflater().inflate(R.menu.default_menu_items_search, menu);	
@@ -53,6 +68,11 @@ public class SearchActivity extends BaseActivity{
 		getMenuInflater().inflate(R.menu.update_search, menu);
 		
         super.onCreateOptionsMenu(menu);
+        getActivityHelper().setupSearch(this, menu);
+        if (searchAtStart){
+        	getActivityHelper().startSearch();
+        	searchAtStart = false;
+        }
         return true;
     }
 	
@@ -96,7 +116,9 @@ public class SearchActivity extends BaseActivity{
         		if (((Synodroid)getApplication()).DEBUG) Log.v(Synodroid.DS_TAG,"SearchActivity: Menu search selected.");
         	}catch (Exception ex){/*DO NOTHING*/}
         	
-            startSearch(null, false, null, false);
+        	if (!UIUtils.isHoneycomb()){
+            	startSearch(null, false, null, false);
+            }
         }
         else if (item.getItemId() == R.id.menu_refresh){
 			try{

@@ -54,6 +54,10 @@ public class ActivityHelper {
                 new ActivityHelper(activity);
     }
 
+    public void setupSearch(Activity ctx, Menu menu){}
+	public boolean startSearch(){return true;}
+	public void stopSearch(){}
+	 
     protected ActivityHelper(Activity activity) {
         mActivity = activity;
     }
