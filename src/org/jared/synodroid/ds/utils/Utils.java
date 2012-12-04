@@ -66,7 +66,7 @@ public class Utils {
 			InputStream is = cr.openInputStream(uri);
 			
 			File path = Environment.getExternalStorageDirectory();
-			path = new File(path, "Android/data/com.bigpupdev.synodroid/cache/");
+			path = new File(path, "Android/data/org.jared.synodroid.ds/cache/");
 			path.mkdirs();
 			
 			String fname = getContentName(cr, uri);

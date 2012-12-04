@@ -152,7 +152,7 @@ public class DebugActivity extends BaseActivity{
 	
 	private void sendDebugLogs(String logs){
 	    File out_path = Environment.getExternalStorageDirectory();
-		out_path = new File(out_path, "Android/data/com.bigpupdev.synodroid/cache/");
+		out_path = new File(out_path, "Android/data/org.jared.synodroid.ds/cache/");
 		File file = new File(out_path, "debug_log.txt");
 		try {
 			// Make sure the Pictures directory exists.
