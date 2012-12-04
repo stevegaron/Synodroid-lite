@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.jared.synodroid.ds.R;
 import org.jared.synodroid.ds.Synodroid;
+import org.jared.synodroid.ds.data.DSMVersion;
 import org.jared.synodroid.ds.data.Task;
 import org.jared.synodroid.ds.data.TaskFile;
 import org.jared.synodroid.ds.data.TaskStatus;
@@ -117,7 +118,17 @@ public class DetailFiles extends SynodroidFragment implements OnCheckedChangeLis
 		View v = inflater.inflate(R.layout.detail_files, null);
 
 		filesListView = (ListView) v.findViewById(android.R.id.list);
-		fileAdapter = new FileDetailAdapter(this, task, app.getServer().getDsmVersion());
+		DSMVersion vers = null;
+		try{
+			vers = app.getServer().getDsmVersion();
+		}
+		catch (NullPointerException e){
+			try{
+				if (((Synodroid)((DetailActivity)a).getApplication()).DEBUG) Log.e(Synodroid.DS_TAG,"DetailFiles: Could not get DSM Version.");
+			}
+			catch (Exception ex){/*DO NOTHING*/}
+		}
+		fileAdapter = new FileDetailAdapter(this, task, vers);
 		filesListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 		filesListView.setOnItemClickListener(fileAdapter);
 		filesListView.setOnItemLongClickListener(fileAdapter);
