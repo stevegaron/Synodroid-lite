@@ -105,9 +105,7 @@
 <string name="label_asc_sort">Aufsteigende Sortierung</string>
 <string name="hint_asc_sort_on">Sortiere aufsteigend</string>
 <string name="hint_asc_sort_off">Sortiere absteigend</string>
-<string name="eula_accept">Akzeptieren</string>
 <string name="eula_hide">Verstecken</string>
-<string name="eula_refuse">Ablehnen</string>
 <string name="action_detailing">Empfange Details von \'%s\'</string>
 <string name="action_adding">Füge %s hinzu</string>
 <string name="detail_tab_general">Allgemein</string>
@@ -223,7 +221,6 @@
 <string name="action_download_original_file">Lade Originaldatei herunter</string>
 <string name="action_download_original_saved">Die Datei wurde auf dem externen Speicher gespeichert (/sdcard/download)</string>
 <string name="action_download_original_failed">Datei konnte nicht gespeichert werden. Vermutlich ist der externe Speicher nicht eingebunden.</string>
-<string name="lang_de">Deutsch</string>
 <string name="translator">&quot;Übersetzer:&quot;</string>
 <string name="fullscreen_preference">Vollbild</string>
 <string name="summary_fullscreen_preference">Versteckt die Benachrichtigungsleiste</string>
@@ -298,7 +295,7 @@
 <string name="rep3">Drücken Sie den Menü-Knopf Ihres Gerätes auf der Startseite von Synodroid und wählen sie Einstellungen. Drücken sie Menü erneut im Einstellungsfenster und wählen sie eine der folgenden Optionen:\n\n1. Einen Server suchen\n2. Einen Server hinzufügen</string>
 
 <string name="faq4">Die Serversuche findet mein Synology NAS nicht, warum?</string>
-<string name="rep4">Bevor Sie die Serversuche benutzen sollten sie folgendes wissen:\n\n- 1 -\nSie müssen mit dem selben WLAN verbunden sein wie Ihr NAS.\n\n- 2 -\nIhr NAS muss eingeschaltet und betriebsbereit sein.\n\n- 3 -\nSie müssen Android 1.6 oder höher verwenden.\n\n** Info:\nWenn die Serversuche für sie nicht funktioniert können sie Ihren Server immer noch manuell über "Server hinzufügen" in den Einstellungen hinzufügen.</string>
+<string name="rep4">Bevor Sie die Serversuche benutzen sollten sie folgendes wissen:\n\n- 1 -\nSie müssen mit demselben WLAN verbunden sein wie Ihr NAS.\n\n- 2 -\nIhr NAS muss eingeschaltet und betriebsbereit sein.\n\n- 3 -\nSie müssen Android 1.6 oder höher verwenden.\n\n** Info:\nWenn die Serversuche für sie nicht funktioniert können sie Ihren Server immer noch manuell über "Server hinzufügen" in den Einstellungen hinzufügen.</string>
 
 <string name="faq5">Diese FAQ haben mir nicht geholfen. Was soll ich tun?</string>
 <string name="rep5">Schreiben sie den Entwicklern eine Email (auf Englisch) indem sie den Button unten benutzen.\n\nBitte stellen sie eine präzise Frage und geben sie uns Informationen zum Verständnis des Problems.</string>
