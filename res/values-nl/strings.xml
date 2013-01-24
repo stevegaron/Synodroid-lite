@@ -105,9 +105,7 @@
 <string name="label_asc_sort">Oplopend sorteren</string>
 <string name="hint_asc_sort_on">Oplopend gesorteerd</string>
 <string name="hint_asc_sort_off">Aflopend gesorteerd</string>
-<string name="eula_accept">Accepteer</string>
 <string name="eula_hide">Verbergen</string>
-<string name="eula_refuse">Weigeren</string>
 <string name="action_detailing">Details ophalen van \'%s\'</string>
 <string name="action_adding">Toevoegen van het bestand %s</string>
 <string name="detail_tab_general">Algemaan</string>
@@ -223,7 +221,6 @@
 <string name="action_download_original_file">Originele bestand downloaden</string>
 <string name="action_download_original_saved">Het bestand is opgeslagen op uw externe opslag (/sdcard/download)</string>
 <string name="action_download_original_failed">Kan het bestand niet opslaan, waarschijnlijk omdat uw externe opslag niet is geïnstalleerd</string>
-<string name="lang_es">Spaans</string>
 <string name="translator">&quot;Vertalers:&quot;</string>
 <string name="fullscreen_preference">Volledig scherm</string>
 <string name="summary_fullscreen_preference">Verberg de statusbar</string>

@@ -105,9 +105,7 @@
 <string name="label_asc_sort">Ordre de tri</string>
 <string name="hint_asc_sort_on">Le tri est croissant</string>
 <string name="hint_asc_sort_off">Le tri est décroissant</string>
-<string name="eula_accept">"J'accepte"</string>
 <string name="eula_hide">Fermer</string>
-<string name="eula_refuse">Je refuse</string>
 <string name="action_detailing">Récupération des details de \'%s\'</string>
 <string name="action_adding">Ajout de %s</string>
 <string name="detail_tab_general">Général</string>
@@ -223,7 +221,6 @@
 <string name="action_download_original_file">"Téléchargement du fichier d'origine"</string>
 <string name="action_download_original_saved">Le fichier a été sauvegardé dans votre stockage externe (/sdcard/download)</string>
 <string name="action_download_original_failed">&quot;Impossible de sauvegarder le fichier. Votre stockage externe n'est peut-être pas connecté.&quot;</string>
-<string name="lang_es">Espagnol</string>
 <string name="translator">&quot;Traducteurs:&quot;</string>
 <string name="fullscreen_preference">Plein Écran</string>
 <string name="summary_fullscreen_preference">Masque la barre de notification</string>
