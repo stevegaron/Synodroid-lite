@@ -9,6 +9,7 @@
 package org.jared.synodroid.ds.protocol.v22;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -35,6 +36,7 @@ import org.jared.synodroid.ds.data.TaskProperties;
 import org.jared.synodroid.ds.data.TaskStatus;
 import org.jared.synodroid.ds.protocol.DSHandler;
 import org.jared.synodroid.ds.protocol.DSMException;
+import org.jared.synodroid.ds.protocol.DownloadStationNotFound;
 import org.jared.synodroid.ds.protocol.MultipartBuilder;
 import org.jared.synodroid.ds.protocol.Part;
 import org.jared.synodroid.ds.protocol.QueryBuilder;
@@ -669,7 +671,7 @@ class DSHandlerDSM22 implements DSHandler {
 	 * 
 	 * @see org.jared.synodroid.ds.common.protocol.DSHandler#getSharedDirectory()
 	 */
-	public String getSharedDirectory() throws Exception {
+	public String getSharedDirectory(boolean remap) throws Exception {
 		String result = null;
 		// If we are logged on
 		if (server.isConnected()) {
@@ -677,7 +679,18 @@ class DSHandlerDSM22 implements DSHandler {
 			// Execute
 			JSONObject json;
 			synchronized (server) {
-				json = server.sendJSONRequest(DM_URI, getShared.toString(), "GET");
+				try{
+					json = server.sendJSONRequest(DM_URI, getShared.toString(), "GET");
+				}
+				catch (FileNotFoundException ex){
+					if (remap){
+						if (server.DEBUG) Log.w(Synodroid.DS_TAG, "DSHandlerDSM22: Download station does not seem to be running.");
+						throw new DownloadStationNotFound("DSHanderDSM22:  Download station does not seem to be running.");
+					}
+					else{
+						throw ex;
+					}
+				}
 			}
 			boolean success = json.getBoolean("success");
 			// If request succeded
