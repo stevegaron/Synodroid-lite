@@ -387,7 +387,7 @@
 <string name="action_deleting_multiple">&quot;Geselecteerde taken verwijderen...%s&quot;</string>
 <string name="action_pausing_multiple">&quot;Geselecteerde taken pauseren...%s&quot;</string>
 <string name="action_resuming_multiple">&quot;Geselecteerde taken hervatten...%s&quot;</string>
-<string name="file_not_found">Mislukt om toegang te krijgen tot een van de services. Dit kan komen door een verkeerd geselecteerde DSM versie. U kunt auto-herkenning aanzetten in de instellingen om de DSM versie automatisch vast te stellen...</string>
+<string name="file_not_found">Mislukt om toegang te krijgen tot een van de services. Dit kan komen door een verkeerd geselecteerde DSM versie.</string>
 <string name="failed_response">Mislukt om het antwoord van de server te verwerken. Maak opnieuw verbinding!</string>
 <string name="syno_pro_banner_text">Krijg de nieuwe functies van Synodroid Pro. Klik hier!</string>
 <string name="err_nomarket_upgrade">Android market is niet geïnstalleerd op je toestel.\n\nContacteer de ontwikkelaars van Synodroid voor een kopie van Synodroid Pro.</string>
@@ -486,7 +486,7 @@
 <string name="detail_status_error_max_temp_file">Fout: Maximale aantal tijdelijke bestanden bereikt</string>
 <string name="detail_status_error_max_dest_file">Fout: Maximale groote voor de bestemmin is bereikt.</string>
 <string name="detail_status_error_duplicate">Fout: Download gedupliceerd.</string>
-<string name="download_station_not_found">Mislukt om de connectie te testen. Gebruikt DSM-auto detectie in de instellingen en zorg dat Download Station geïnstalleerd is en werkt op je NAS.</string>
+<string name="download_station_not_found">Mislukt om de connectie te testen. Controleer de server configuratie van je DSM-versie en zorg dat Download Station geïnstalleerd is en werkt op je NAS.</string>
 <string name="share">Deel url</string>
 
 <string name="detail_status_extracting">Archief uitpakken</string>

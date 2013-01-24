@@ -388,7 +388,7 @@
 <string name="action_deleting_multiple">Entferne gewählte Aufgaben... %s</string>
 <string name="action_pausing_multiple">Pausiere gewählte Aufgaben... %s</string>
 <string name="action_resuming_multiple">Nehme gewählte Aufgaben wieder auf... %s</string>
-<string name="file_not_found">Auf eines der Features konnte nicht zugegriffen werden. Das liegt wahrscheinlich daran, dass sie eine falsche DSM-Version angegeben haben. Wählen sie "Automatische DSM-Version" in den Einstellungen.</string>
+<string name="file_not_found">Auf eines der Features konnte nicht zugegriffen werden. Das liegt wahrscheinlich daran, dass sie eine falsche DSM-Version angegeben haben.</string>
 <string name="failed_response">Die Antwort konnte nicht vom Server gelesen werden. Bitte verbinden sie sich erneut!</string>
 <string name="welcome">Willkommen bei Synodroid!</string>
 <string name="get_started">Synodroid Tutorial</string>
@@ -491,7 +491,7 @@
 <string name="detail_status_error_max_temp_file">Fehler: Maximale Größe des temporären Dateisystems überschritten</string>
 <string name="detail_status_error_max_dest_file">Fehler: Maximale Größe des Zieldateisystems überschritten</string>
 <string name="detail_status_error_duplicate">Fehler: Download dupliziert</string>
-<string name="download_station_not_found">Verbindungstest fehlgeschlagen. Benutzen sie die automatische DSM-Erkennung in den Einstellungen und stellen sie sicher, dass die Download Station auf ihrem NAS installiert ist und läuft.</string>
+<string name="download_station_not_found">Verbindungstest fehlgeschlagen. Überprüfen sie, dass in der Server-Konfiguration die richtige DSM Version angegeben ist und stellen sie sicher, dass die Download Station auf ihrem NAS installiert ist und läuft.</string>
 <string name="share">URL teilen</string>
 
 </resources>

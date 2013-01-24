@@ -389,7 +389,7 @@
 <string name="action_deleting_multiple">&quot;Borrando tareas seleccionadas...%s&quot;</string>
 <string name="action_pausing_multiple">&quot;Parando tareas seleccionadas...%s&quot;</string>
 <string name="action_resuming_multiple">&quot;Reiniciando tareas seleccionadas...%s&quot;</string>
-<string name="file_not_found">Fallo al acceder a una de las funcionalidades. Suele pasar al seleccionar una versión de DSM incorrecta. Usa la autodetección de DSM en la configuración...</string>
+<string name="file_not_found">Fallo al acceder a una de las funcionalidades. Suele pasar al seleccionar una versión de DSM incorrecta.</string>
 <string name="failed_response">Fallo al leer la respuesta desde el servidor. Por favor, reconecta</string>
 
 
@@ -485,7 +485,7 @@
 <string name="detail_status_error_max_temp_file">Error: Tamaño máximo de fichero temporal excedido.</string>
 <string name="detail_status_error_max_dest_file">Error: Tamaño máximo de fichero destino excedido.</string>
 <string name="detail_status_error_duplicate">Error: Descarga duplicada</string>
-<string name="download_station_not_found">Error al probar la conexión. Usa el detector automática de DSM en la configuración y asegúrate que la aplicación \"Download Station\" está instalada y funcionando en tu NAS.</string>
+<string name="download_station_not_found">Error al probar la conexión. Asegúrate que la configuración del servidor coincide con la versión de tu DSM y asegúrate que la aplicación \"Download Station\" está instalada y funcionando en tu NAS.</string>
 <string name="share">Compartir URL</string>
 
 <string name="detail_status_extracting">Extrayendo archivo</string>

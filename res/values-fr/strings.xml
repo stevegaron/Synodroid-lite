@@ -389,7 +389,7 @@
 <string name="action_deleting_multiple">&quot;Suppression des tâches sélectionnées...%s&quot;</string>
 <string name="action_pausing_multiple">&quot;Pause des tâches sélectionnées...%s&quot;</string>
 <string name="action_resuming_multiple">&quot;Reprise des tâches sélectionnées...%s&quot;</string>
-<string name="file_not_found">Échec d\'accès à une des fonctionnalités du serveur. Il est probable que vous utilisiez la mauvaise version de DSM. Utilisez la fonction d\'auto-détection de DSM dans les paramètres...</string>
+<string name="file_not_found">Échec d\'accès à une des fonctionnalités du serveur. Il est probable que vous utilisiez la mauvaise version de DSM.</string>
 <string name="failed_response">Échec de lecture de la réponse du serveur. Reconnectez-vous!</string>
 <string name="syno_pro_banner_text">Nouvelles fonctionalitées avec Synodroid Pro. Appuyez ici!</string>
 <string name="err_nomarket_upgrade">Android market n\'est pas installé sur votre appareil.\n\nContactez le développeur pour avoir une version de Synodroid Pro.</string>
@@ -488,7 +488,7 @@
 <string name="detail_status_error_max_dest_file">Erreur: Dépasse la taille de fichier de destination maximale</string>
 <string name="detail_status_error_duplicate">Erreur: Torrent dupliqué</string>
 <string name="detail_status_error_invalid">Erreur: Torrent invalide</string>
-<string name="download_station_not_found">Impossible de tester la connexion. Utiliser la détection automatique de DSM dans les paramètres et assurez vous que l\'application Download Station est installé et fonctionne sur votre NAS.</string>
+<string name="download_station_not_found">Impossible de tester la connexion. Selectioné la bonne version de DSM dans les paramètres et assurez vous que l\'application Download Station est installé et fonctionne sur votre NAS.</string>
 <string name="share">Partager lien</string>
 
 <string name="detail_status_extracting">Décompression de l\'archive</string>

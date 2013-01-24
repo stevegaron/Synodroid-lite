@@ -6,7 +6,7 @@
 <string name="app_url">http://code.google.com/p/synodroid-ds/</string>
 
 <string name="connect_cant_connect">"Can't connect to {0}. Error is '{1}'."</string>
-<string name="unknow_reason">&quot;An error occured for an unknown reason&quot;</string>
+<string name="unknow_reason">&quot;An error occurred for an unknown reason&quot;</string>
 <string name="connect_wrong_userpassword">"Wrong user or password. Please try again."</string>
 <string name="connect_already_connected">"You're connected to another computer. Please reconnect."</string>
 <string name="connect_nohost">&quot;Can't contact host. Please verify your settings.&quot;</string>
@@ -125,7 +125,7 @@
 
 <string name="detail_originaltorrent">Original torrent</string>
 <string name="detail_status">Status</string>
-<string name="detail_transfered">Transfered</string>
+<string name="detail_transfered">Transferred</string>
 <string name="detail_speed">Speed</string>
 <string name="detail_peers">Peers (connected / total)</string>
 <string name="detail_seeders_leechers">Seeders - Leechers</string>
@@ -392,7 +392,7 @@
 <string name="action_deleting_multiple">&quot;Removing selected tasks...%s&quot;</string>
 <string name="action_pausing_multiple">&quot;Pausing selected tasks...%s&quot;</string>
 <string name="action_resuming_multiple">&quot;Resuming selected tasks...%s&quot;</string>
-<string name="file_not_found">Failed to get access to one of the features. This is most likely due to a wrong DSM version selected. Use DSM autodetection in the settings...</string>
+<string name="file_not_found">Failed to get access to one of the features. This is most likely due to a wrong DSM version selected.</string>
 <string name="failed_response">Failed to read response from server. Please reconnect!</string>
 <string name="syno_pro_banner_text">Get new features with Synodroid Pro. Press to get it!</string>
 <string name="err_nomarket_upgrade">Android market is not installed on your device.\n\nContact the developers to get a copy of Synodroid Pro.</string>
@@ -401,7 +401,7 @@
 
 <string name="welcome">Welcome to Synodroid!</string>
 <string name="get_started">Synodroid Tutorial</string>
-<string name="get_started_text">Swipe throught the pages of this tutorial to get more information about the multiple features of this application.</string>
+<string name="get_started_text">Swipe through the pages of this tutorial to get more information about the multiple features of this application.</string>
 <string name="get_started_text_2">NOTE: The tutorial will always be available from the About page (From the homepage: Menu -> About). You should read through it at least once, you might learn something.</string>
 <string name="skip">Skip tutorial</string>
 <string name="syno_info_title">Control your NAS</string>
@@ -489,7 +489,7 @@
 <string name="detail_status_error_max_dest_file">Error: Exceeded max destination file size</string>
 <string name="detail_status_error_duplicate">Error: Duplicate Torrent</string>
 <string name="detail_status_error_invalid">Error: Invalid Torrent</string>
-<string name="download_station_not_found">Failed to test the connection. Use DSM autodetection in the settings and make sure Download Station app is installed and running on your NAS.</string>
+<string name="download_station_not_found">Failed to test the connection. Select the right DSM version in the config and make sure Download Station app is installed and running on your NAS.</string>
 <string name="share">Share url</string>
 
 <string name="detail_status_extracting">Extracting archive</string>
