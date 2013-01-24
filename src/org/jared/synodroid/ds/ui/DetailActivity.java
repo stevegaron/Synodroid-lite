@@ -107,6 +107,7 @@ public class DetailActivity extends BaseActivity{
 	private static final int MENU_CLEAR = 6;
 	private static final int MENU_PARAMETERS = 7;
 	private static final int MENU_DESTINATION = 8;
+	//private static final int MENU_SHARE = 9;
 	private static final int TASK_PARAMETERS_DIALOG = 3;
 	private static final int TASK_PROPERTIES_DIALOG = 4;
 	
@@ -378,11 +379,11 @@ public class DetailActivity extends BaseActivity{
 		// URL
 		final String originalLink = details.url;
 		DetailText urlDetail = new DetailText(getString(R.string.detail_url), originalLink);
+		task.originalLink = originalLink;
 		urlDetail.setAction(new DetailAction() {
 			public void execute(Detail detailsP) {
 				if ((task.isTorrent || task.isNZB)) {
 					Synodroid app = (Synodroid) getApplication();
-					task.originalLink = originalLink;
 					app.executeAsynchronousAction((DetailMain)mAdapter.getItem(MAIN_ITEM), new DownloadOriginalLinkAction(task), false);
 				}
 			}
@@ -788,6 +789,11 @@ public class DetailActivity extends BaseActivity{
 			}
 		}
         
+        //Pro version only
+        //if (task.originalLink != null && (task.originalLink.toLowerCase().startsWith("http://") || task.originalLink.toLowerCase().startsWith("https://") || task.originalLink.toLowerCase().startsWith("ftp://") || task.originalLink.toLowerCase().startsWith("magnet:"))){
+        //	menu.add(0, MENU_SHARE, 0, getString(R.string.share)).setIcon(android.R.drawable.ic_menu_share);
+        //}
+        
         try{
         	if (((Synodroid)getApplication()).getServer().getDsmVersion().greaterThen(DSMVersion.VERSION3_0)){
         		menu.add(0, MENU_DESTINATION, 0, getString(R.string.menu_destination)).setIcon(android.R.drawable.ic_menu_share).setEnabled(true);
@@ -823,6 +829,19 @@ public class DetailActivity extends BaseActivity{
 			}
             return true;
         }
+// Pro version only
+//		else if (item.getItemId() == MENU_SHARE){
+//			try{
+//				if (app.DEBUG) Log.v(Synodroid.DS_TAG,"DetailActivity: Menu share selected.");
+//		 	}catch (Exception ex){/*DO NOTHING*/}
+//		 	   
+//		 	Intent intent = new Intent(Intent.ACTION_SEND);
+//		 	intent.setType("text/plain");
+//		 	intent.putExtra(Intent.EXTRA_TEXT, task.originalLink);
+//		 	intent.putExtra(android.content.Intent.EXTRA_SUBJECT, task.fileName);
+//		 	startActivity(Intent.createChooser(intent, "Share url"));  
+//		 	return true;
+//		}
 		else if (item.getItemId() == MENU_PAUSE){
 			try{
 				if (app.DEBUG) Log.v(Synodroid.DS_TAG,"DetailActivity: Menu pause selected.");
