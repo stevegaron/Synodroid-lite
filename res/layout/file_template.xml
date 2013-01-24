@@ -26,6 +26,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
+        android:textColor="#999"
         android:layout_toRightOf="@+id/id_file_to_download"
         android:ellipsize="marquee"
         android:singleLine="true"
@@ -58,6 +59,7 @@
         android:id="@+id/id_file_ext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#999"
         android:layout_toLeftOf="@+id/img_priority"
         android:layout_alignBottom="@+id/id_file_size"
         android:text=".txt"/>
