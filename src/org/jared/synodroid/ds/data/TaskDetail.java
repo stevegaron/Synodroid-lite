@@ -18,6 +18,8 @@ package org.jared.synodroid.ds.data;
 
 import java.io.Serializable;
 
+import org.jared.synodroid.ds.data.TaskStatus;
+
 /**
  * The detail of a task. Every attributs are public.
  * 
@@ -90,7 +92,12 @@ public class TaskDetail implements Serializable {
 		try {
 			taskStat = TaskStatus.valueOf(status);
 		} catch (Exception e) {
-			taskStat = TaskStatus.TASK_UNKNOWN;
+			if (status.startsWith("TASK_EXTRACTING")){
+				taskStat = TaskStatus.TASK_EXTRACTING;
+			}
+			else{
+				taskStat = TaskStatus.TASK_UNKNOWN;
+			}
 		}
 
 		return taskStat;

@@ -19,6 +19,7 @@ package org.jared.synodroid.ds.data;
 import java.io.Serializable;
 
 import org.jared.synodroid.ds.server.SimpleSynoServer;
+import org.jared.synodroid.ds.data.TaskStatus;
 
 /**
  * A simple data container for a torrent. This class is used to display 'general' information about a torrent file.<br/>
@@ -115,7 +116,12 @@ public class Task implements Serializable {
 		try {
 			taskStat = TaskStatus.valueOf(status);
 		} catch (Exception e) {
-			taskStat = TaskStatus.TASK_UNKNOWN;
+			if (status.startsWith("TASK_EXTRACTING")){
+				taskStat = TaskStatus.TASK_EXTRACTING;
+			}
+			else{
+				taskStat = TaskStatus.TASK_UNKNOWN;
+			}
 		}
 
 		return taskStat;
