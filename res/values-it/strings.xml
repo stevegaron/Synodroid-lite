@@ -223,7 +223,7 @@
     <string name="crash_notif_title">Synodroid si è bloccato...</string>
     <string name="crash_notif_text">Per favore, clicca qui per risolvere l’errore.</string>
     <string name="crash_dialog_title">Synodroid si è bloccato</string>
-    <string name="crash_dialog_text">Si è verificato un errore sconosciuto che ha costretto         a terminare l’applicazione. Per favore, aiutaci a correggerlo inviandoci una segnalazione,         devi solo cliccare \'OK\'.</string>
+    <string name="crash_dialog_text">Si è verificato un errore sconosciuto che ha costretto a terminare l’applicazione. Per favore, aiutaci a correggerlo inviandoci una segnalazione, devi solo cliccare \'OK\'.</string>
     <string name="crash_dialog_comment_prompt">Aggiungi la tua mail e il tuo commento riguardo al problema qui sotto:</string>
     <string name="crash_dialog_ok_toast">Grazie!</string>
     <string name="label_showupload">Stato di upload</string>
